@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faAddressCard, faBlog, faHammer, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faBlog, faHammer, IconDefinition } from '@fortawesome/free-solid-svg-icons'
 
 function Sidebar() {
     function SidebarItem(props: {link_to: string, icon: IconDefinition, text: string}) {
@@ -13,7 +13,6 @@ function Sidebar() {
         <nav className='h-screen bg-neutral-950 text-gray-500 fixed group w-16 ease-out transition-all duration-150 hover:w-48 overflow-hidden'>
             <ul className='p-1 ml-1'>
                 <SidebarItem link_to='/' icon={faHouse} text='Home' />
-                <SidebarItem link_to='/about' icon={faAddressCard} text='About' />
                 <SidebarItem link_to='/blog' icon={faBlog} text='Blog' />
                 <SidebarItem link_to='/projects' icon={faHammer} text='Projects' />
             </ul>

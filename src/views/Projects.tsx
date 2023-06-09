@@ -1,8 +1,19 @@
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import Tilt from 'react-parallax-tilt';
+
+interface Repo {
+    description: string
+    name: string
+    homepage:string
+    html_url: string
+}
 
 function Projects() {
-    const [repos, setRepos] = useState([])
+    const [repos, setRepos] = useState<Repo[]>([])
 
     useEffect(() => {
         fetch('https://api.github.com/users/TheWilley/repos').then(response => response.text()).then(repos => setRepos(JSON.parse(repos)))
@@ -15,10 +26,18 @@ function Projects() {
             if (repo.description != null) {
                 repo_list.push(
                     <li>
-                        <a href="#" className="h-full block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate">{repo.name}</h5>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">{repo.description}</p>
-                        </a>
+                        <Tilt tiltReverse={true}>
+                            <div className="h-full relative block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate">{repo.name}</h5>
+                                <p className="font-normal text-gray-700 dark:text-gray-400">{repo.description}</p>
+                                <div className="pt-12">
+                                    <div className="absolute bottom-0 left-0 text-center w-full border">
+                                        {repo.homepage && <a href={repo.homepage} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faLink} /> </a>}
+                                        <a href={repo.html_url} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faGithub} /> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </Tilt>
                     </li>
                 )
             }
