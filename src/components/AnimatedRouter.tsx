@@ -3,6 +3,7 @@ import Home from '../views/Home'
 import Blog from '../views/Blog'
 import Projects from '../views/Projects'
 import { AnimatePresence } from 'framer-motion'
+import Post from '../views/Post'
 
 function AnimatedRouter() {
     const location = useLocation()
@@ -13,6 +14,7 @@ function AnimatedRouter() {
                 <Route path="/" element={<Home />}> Home </Route>
                 <Route path="/blog" element={<Blog />}> Blog </Route>
                 <Route path="/projects" element={<Projects />}> Blog </Route>
+                <Route path="/blog/:id" element={<Post />}> Blog </Route>
             </Routes>
         </AnimatePresence>
     )
