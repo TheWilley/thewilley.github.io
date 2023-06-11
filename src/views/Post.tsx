@@ -31,6 +31,33 @@ function Post() {
         }
     })
 
+    const renderPost = () => {
+        if (post == null) {
+            return (
+                <div className='grid h-screen place-items-center text-3xl font-bold'> 
+                Error loading post, sorry! 
+                😢
+                </div>
+            )
+        } else {
+            return (
+                <>
+                    <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-full w-full object-cover' />
+                    <div>
+                        <h1 className="text-5xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
+                        <p className='text-gray-600 text-sm text-base'> By TheWilley · {`${convertDateAndTime(post.data.attributes.publishedAt)}`} {convertDateAndTime(post?.data.attributes.publishedAt) !== convertDateAndTime(post.data.attributes.updatedAt) &&
+                            <span> · {" Updated " + convertDateAndTime(post.data.attributes.updatedAt)}</span>
+                        }</p>
+                        <hr className='mt-2 mb-2' />
+                        <Markdown>
+                            {String(post?.data.attributes.contents)}
+                        </Markdown>
+                    </div>
+                </>
+            )
+        }
+    }
+
     useEffect(() => {
         const queryParameters = new URLSearchParams(window.location.search)
         const id = queryParameters.get("id")
@@ -39,17 +66,7 @@ function Post() {
 
     return (
         <motion.div initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
-            <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-full w-full object-cover' />
-            <div>
-                <h1 className="text-5xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
-                <p className='text-gray-600 text-sm text-base'> By TheWilley · {`${convertDateAndTime(post.data.attributes.publishedAt)}`} {convertDateAndTime(post?.data.attributes.publishedAt) !== convertDateAndTime(post.data.attributes.updatedAt) &&
-                    <span> · {" Updated " + convertDateAndTime(post.data.attributes.updatedAt)}</span>
-                }</p>
-                <hr className='mt-2 mb-2'/>
-                <Markdown>
-                    {String(post?.data.attributes.contents)}
-                </Markdown>
-            </div>
+            {renderPost()}
         </motion.div>
     )
 }

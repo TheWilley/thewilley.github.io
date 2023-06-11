@@ -32,9 +32,9 @@ function Projects() {
                                 <p className="font-normal text-gray-700 dark:text-gray-400">{repo.description}</p>
                                 <div className="pt-12">
                                     <div className="absolute bottom-0 left-0 text-center w-full">
-                                    <hr className='mt-1 mb-1'/>
+                                        <hr className='mt-1 mb-1' />
                                         {repo.homepage && <a href={repo.homepage} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faLink} className="hover:opacity-50" /> </a>}
-                                        <a href={repo.html_url} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faGithub}  className="hover:opacity-50"/> </a>
+                                        <a href={repo.html_url} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faGithub} className="hover:opacity-50" /> </a>
                                     </div>
                                 </div>
                             </div>
@@ -47,12 +47,30 @@ function Projects() {
         return repo_list
     }
 
+    const renderProjects = () => {
+        if (repos == null) {
+            return (
+
+                <div className='grid h-screen place-items-center text-3xl font-bold'>
+                    Error loading projects, sorry!
+                    😢
+                </div>
+            )
+        } else {
+            return (
+                <>
+                    <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Projects </h1>
+                    <ul className="list-none container m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {renderRepos()}
+                    </ul>
+                </>
+            )
+        }
+    }
+
     return (
         <motion.div initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
-            <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Projects </h1>
-            <ul className="list-none container m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {renderRepos()}
-            </ul>
+            {renderProjects()}
         </motion.div>
     )
 }

@@ -62,6 +62,26 @@ function Blog() {
         </li>
     )
 
+    const renderPosts = () => {
+        if (posts.data == null) {
+            return (
+                <div className='grid h-screen place-items-center text-3xl font-bold'>
+                    Error loading blog, sorry!
+                    😢
+                </div>
+            )
+        } else {
+            return (
+                <>
+                    <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Blog </h1>
+                    <ul className="list-none container grid md:grid-cols-1 lg:grid-cols-2 gap-2">
+                        {allPosts}
+                    </ul>
+                </>
+            )
+        }
+    }
+
     /**
      * Fetches the blog data onload
      */
@@ -71,10 +91,7 @@ function Blog() {
 
     return (
         <motion.div initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
-            <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Blog </h1>
-            <ul className="list-none container grid md:grid-cols-1 lg:grid-cols-2 gap-2">
-                {allPosts}
-            </ul>
+            {renderPosts()}
         </motion.div>
     )
 }
