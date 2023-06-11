@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import { IconDefinition, faBlog, faHammer, faHouse } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faBlog, faHammer, IconDefinition } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 function Sidebar() {
     function SidebarItem(props: {link_to: string, icon: IconDefinition, text: string}) {

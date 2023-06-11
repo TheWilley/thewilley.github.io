@@ -1,19 +1,21 @@
-import { Link } from "react-router-dom"
-import { useEffect, useState } from 'react'
-import { motion } from "framer-motion"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+/*/
+    Blog file
+
+    Displays all post from Strapi backend
+/*/
+
 import { faClock, faPenToSquare } from '@fortawesome/free-regular-svg-icons'
-import { convertDateAndTime } from "../helpers/helpers"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { motion } from "framer-motion"
+import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom"
+import configuration from "../config"
+import { convertDateAndTime, convertToURI } from "../helpers/helpers"
 
 function Blog() {
-    const convertToURI = (value: string) => {
-        return value
-            .trim()
-            .toLowerCase()
-            .replace(/[\W_]+/g, '-')
-            .replace(/^-+|-+$/g, '');
-    }
-
+    /**
+     * Handles the state of blog posts
+     */
     const [posts, setPosts] = useState<Posts>({
         data: [{
             id: "",
@@ -33,11 +35,15 @@ function Blog() {
         }]
     })
 
+    /**
+     * Creates JSX for a blog entry
+     * @returns The blog entry JSX
+     */
     const allPosts = posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                    <img className="w-full" src={`http://localhost:1337${post.attributes.thumbnail.data.attributes.url}`} />
+                    <img className="w-full" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.url}`} />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base">
@@ -56,8 +62,11 @@ function Blog() {
         </li>
     )
 
+    /**
+     * Fetches the blog data onload
+     */
     useEffect(() => {
-        fetch('http://localhost:1337/api/blog-posts?populate=*').then(data => data.text()).then(posts => setPosts(JSON.parse(posts)))
+        fetch(`${configuration.endpoint_url}/api/blog-posts?populate=*`).then(data => data.text()).then(posts => setPosts(JSON.parse(posts)))
     }, [])
 
     return (

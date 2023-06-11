@@ -1,9 +1,9 @@
-import { Route, Routes, useLocation } from 'react-router-dom'
-import Home from '../views/Home'
-import Blog from '../views/Blog'
-import Projects from '../views/Projects'
 import { AnimatePresence } from 'framer-motion'
+import { Route, Routes, useLocation } from 'react-router-dom'
+import Blog from '../views/Blog'
+import Home from '../views/Home'
 import Post from '../views/Post'
+import Projects from '../views/Projects'
 
 function AnimatedRouter() {
     const location = useLocation()

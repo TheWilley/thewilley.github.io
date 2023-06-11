@@ -1,3 +1,10 @@
+/*/
+    Declarations file
+
+    Declares all types and interfaces
+/*/
+
+// Declaration for all blog posts
 interface Posts {
     data: [
         {
@@ -20,6 +27,7 @@ interface Posts {
     ]
 }
 
+// Declaration for a single blog post
 interface Post {
     data: {
         id: string
@@ -38,4 +46,18 @@ interface Post {
             updatedAt: string
         }
     }
+}
+
+// Declaration for GitHub repos
+interface Repo {
+    description: string
+    name: string
+    homepage:string
+    html_url: string
+}
+
+// Declaration for the configuration
+interface Configuration {
+    endpoint_url: string
+    github_username: string
 }

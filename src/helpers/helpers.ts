@@ -1,3 +1,8 @@
+/**
+ * Converts a date string to a reader friendly format
+ * @param date The date to convert
+ * @returns The converted date
+ */
 const convertDateAndTime = (date: string) => {
     const dateString = date;
     const dateObj = new Date(dateString);
@@ -13,4 +18,17 @@ const convertDateAndTime = (date: string) => {
     return formattedDate
 }
 
-export {convertDateAndTime}
+/**
+ * Converts text to a URI friendly URL
+ * @param value The text to convert
+ * @returns The URL
+ */
+const convertToURI = (value: string) => {
+    return value
+        .trim()
+        .toLowerCase()
+        .replace(/[\W_]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+export { convertDateAndTime, convertToURI }

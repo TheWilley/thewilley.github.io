@@ -1,22 +1,22 @@
-import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLink } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
-import Tilt from 'react-parallax-tilt';
+/*/
+    Projects file
 
-interface Repo {
-    description: string
-    name: string
-    homepage:string
-    html_url: string
-}
+    Shows all repos given a GitHub username
+/*/
+
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Tilt from 'react-parallax-tilt';
+import configuration from "../config";
 
 function Projects() {
     const [repos, setRepos] = useState<Repo[]>([])
 
     useEffect(() => {
-        fetch('https://api.github.com/users/TheWilley/repos').then(response => response.text()).then(repos => setRepos(JSON.parse(repos)))
+        fetch(`https://api.github.com/users/${configuration.github_username}/repos`).then(response => response.text()).then(repos => setRepos(JSON.parse(repos)))
     }, [])
 
     function renderRepos() {
@@ -33,7 +33,6 @@ function Projects() {
                                 <div className="pt-12">
                                     <div className="absolute bottom-0 left-0 text-center w-full">
                                     <hr className='mt-1 mb-1'/>
-
                                         {repo.homepage && <a href={repo.homepage} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faLink} className="hover:opacity-50" /> </a>}
                                         <a href={repo.html_url} className="block m-3 inline-block text-xl"> <FontAwesomeIcon icon={faGithub}  className="hover:opacity-50"/> </a>
                                     </div>
