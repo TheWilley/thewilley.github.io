@@ -28,8 +28,8 @@ function Blog() {
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100">
-                    <div className='h-80 border'>
-                    <img className="w-full max-h-80" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
+                    <div className='border'>
+                    <img className="w-full max-h-80 object-cover" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
                     </div>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>
@@ -62,7 +62,7 @@ function Blog() {
                 return (
                     <>
                         <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Blog </h1>
-                        <ul className="list-none container grid sm_grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                        <ul className="list-none container grid sm-grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                             {allPosts}
                         </ul>
                     </>
