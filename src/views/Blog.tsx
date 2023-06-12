@@ -28,7 +28,9 @@ function Blog() {
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100">
-                    <img className="w-full" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.url}`} loading="lazy"/>
+                    <div className='h-80 border'>
+                    <img className="w-full max-h-80" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
+                    </div>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base">
@@ -78,6 +80,7 @@ function Blog() {
             .then(posts => setPosts(JSON.parse(posts)))
             .catch(() => setPosts(null))
             .finally(() => {
+                console.log(posts)
                 animate(scope.current, { transform: 'scale(1)', opacity: 1 })
             })
     }, [])

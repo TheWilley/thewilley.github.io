@@ -15,7 +15,17 @@ interface Posts {
                 thumbnail: {
                     data: {
                         attributes: {
-                            url: string
+                            formats: {
+                                small: {
+                                    url: string
+                                }
+                                medium: {
+                                    url: string
+                                }
+                                large: {
+                                    url: string
+                                }
+                            }
                         }
                     }
                 }
@@ -37,7 +47,17 @@ interface Post {
             thumbnail: {
                 data: {
                     attributes: {
-                        url: string
+                        formats: {
+                            small: {
+                                url: string
+                            }
+                            medium: {
+                                url: string
+                            }
+                            large: {
+                                url: string
+                            }
+                        }
                     }
                 }
             }

@@ -27,7 +27,7 @@ function Post() {
             } else {
                 return (
                     <>
-                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-64 w-full object-cover' loading="lazy" />
+                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.formats.medium.url}`} className='h-96 max-h-64 w-full object-cover border' loading="lazy" />
                         <div>
                             <h1 className="text-5xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
                             <p className='text-gray-600 text-sm text-base'> By TheWilley · {`${convertDateAndTime(post.data.attributes.publishedAt)}`} {convertDateAndTime(post?.data.attributes.publishedAt) !== convertDateAndTime(post.data.attributes.updatedAt) &&
@@ -47,8 +47,11 @@ function Post() {
     }
 
     useEffect(() => {
-        const queryParameters = new URLSearchParams(window.location.search)
-        const id = queryParameters.get("id")
+        const hashFragment = window.location.hash;
+        const queryIndex = hashFragment.indexOf("?");
+        const queryString = hashFragment.slice(queryIndex + 1);
+        const queryParameters = new URLSearchParams(queryString);
+        const id = queryParameters.get("id");
 
         fetch(`${configuration.endpoint_url}/api/blog-posts/${id}?populate=*`)
             .then(data => data.text())
