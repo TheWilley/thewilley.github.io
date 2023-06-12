@@ -9,6 +9,7 @@ import Markdown from 'markdown-to-jsx'
 import { useEffect, useState } from 'react'
 import configuration from '../config'
 import { convertDateAndTime } from '../helpers/helpers'
+import 'github-markdown-css'
 
 function Post() {
     const [post, setPost] = useState<Post | null>()
@@ -26,17 +27,19 @@ function Post() {
             } else {
                 return (
                     <>
-                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-full w-full object-cover'  loading="lazy"/>
+                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-full w-full object-cover' loading="lazy" />
                         <div>
                             <h1 className="text-5xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
                             <p className='text-gray-600 text-sm text-base'> By TheWilley · {`${convertDateAndTime(post.data.attributes.publishedAt)}`} {convertDateAndTime(post?.data.attributes.publishedAt) !== convertDateAndTime(post.data.attributes.updatedAt) &&
                                 <span> · {" Updated " + convertDateAndTime(post.data.attributes.updatedAt)}</span>
                             }</p>
                             <hr className='mt-2 mb-2' />
-                            <Markdown>
-                                {String(post?.data.attributes.contents)}
-                            </Markdown>
-                        </div>
+                            <div className='markdown-body'>
+                                <Markdown>
+                                    {String(post?.data.attributes.contents)}
+                                </Markdown>
+                            </div>
+                        </div >
                     </>
                 )
             }

@@ -10,7 +10,7 @@ function Sidebar() {
     }
 
     return (
-        <nav className='h-screen bg-neutral-950 text-gray-500 fixed group w-16 ease-out transition-all duration-150 hover:w-48 overflow-hidden'>
+        <nav className='h-screen bg-neutral-950 text-gray-500 fixed group w-16 ease-out transition-all duration-150 hover:w-48 overflow-hidden z-10'>
             <ul className='p-1 ml-1'>
                 <SidebarItem link_to='/' icon={faHouse} text='Home' />
                 <SidebarItem link_to='/blog' icon={faBlog} text='Blog' />
