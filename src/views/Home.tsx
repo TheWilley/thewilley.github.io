@@ -10,7 +10,7 @@ import '../css/index.css'
 
 function Home() {
     return (
-        <motion.div className='grid text-black place-items-center' initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+        <motion.div className='grid text-black place-items-center p-2' initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
             <div className='text-center'>
                 <img className="rounded-full w-auto max-h-80 align-middle block" src={austronaut} loading="lazy"></img>
                 <h1 className='mt-2 font-mono text-3xl'> TheWilley </h1>

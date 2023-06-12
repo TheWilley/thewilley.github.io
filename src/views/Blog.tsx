@@ -27,7 +27,7 @@ function Blog() {
     const allPosts = posts && posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
-                <div className="rounded overflow-hidden shadow-lg">
+                <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100">
                     <img className="w-full" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.url}`} loading="lazy"/>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>

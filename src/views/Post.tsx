@@ -27,7 +27,7 @@ function Post() {
             } else {
                 return (
                     <>
-                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-full w-full object-cover' loading="lazy" />
+                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 max-h-64 w-full object-cover' loading="lazy" />
                         <div>
                             <h1 className="text-5xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
                             <p className='text-gray-600 text-sm text-base'> By TheWilley · {`${convertDateAndTime(post.data.attributes.publishedAt)}`} {convertDateAndTime(post?.data.attributes.publishedAt) !== convertDateAndTime(post.data.attributes.updatedAt) &&
