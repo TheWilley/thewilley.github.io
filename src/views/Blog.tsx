@@ -11,39 +11,24 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import configuration from "../config"
 import { convertDateAndTime, convertToURI } from "../helpers/helpers"
+import { useAnimate } from "framer-motion"
 
 function Blog() {
     /**
      * Handles the state of blog posts
      */
-    const [posts, setPosts] = useState<Posts>({
-        data: [{
-            id: "",
-            attributes: {
-                contents: "", title: "",
-                thumbnail: {
-                    data: {
-                        attributes: {
-                            url: ""
-                        }
-                    }
-                },
-                descritpion: "",
-                publishedAt: "",
-                updatedAt: ""
-            }
-        }]
-    })
+    const [posts, setPosts] = useState<Posts | null>()
+    const [scope, animate] = useAnimate()
 
     /**
      * Creates JSX for a blog entry
      * @returns The blog entry JSX
      */
-    const allPosts = posts.data.map((post) =>
+    const allPosts = posts && posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="max-w-sm rounded overflow-hidden shadow-lg">
-                    <img className="w-full" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.url}`} />
+                    <img className="w-full" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.url}`} loading="lazy"/>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base">
@@ -63,22 +48,24 @@ function Blog() {
     )
 
     const renderPosts = () => {
-        if (posts.data == null) {
-            return (
-                <div className='grid h-screen place-items-center text-3xl font-bold'>
-                    Error loading blog, sorry!
-                    😢
-                </div>
-            )
-        } else {
-            return (
-                <>
-                    <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Blog </h1>
-                    <ul className="list-none container grid md:grid-cols-1 lg:grid-cols-2 gap-2">
-                        {allPosts}
-                    </ul>
-                </>
-            )
+        if (posts != undefined) {
+            if (posts == null) {
+                return (
+                    <div className='grid h-screen place-items-center text-3xl font-bold'>
+                        Error loading blog, sorry!
+                        😢
+                    </div>
+                )
+            } else {
+                return (
+                    <>
+                        <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Blog </h1>
+                        <ul className="list-none container grid md:grid-cols-1 lg:grid-cols-2 gap-2">
+                            {allPosts}
+                        </ul>
+                    </>
+                )
+            }
         }
     }
 
@@ -86,11 +73,17 @@ function Blog() {
      * Fetches the blog data onload
      */
     useEffect(() => {
-        fetch(`${configuration.endpoint_url}/api/blog-posts?populate=*`).then(data => data.text()).then(posts => setPosts(JSON.parse(posts)))
+        fetch(`${configuration.endpoint_url}/api/blog-posts?populate=*`)
+            .then(data => data.text())
+            .then(posts => setPosts(JSON.parse(posts)))
+            .catch(() => setPosts(null))
+            .finally(() => {
+                animate(scope.current, { transform: 'scale(1)', opacity: 1 })
+            })
     }, [])
 
     return (
-        <motion.div initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
             {renderPosts()}
         </motion.div>
     )

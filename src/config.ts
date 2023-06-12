@@ -5,7 +5,7 @@
 /*/
 
 const configuration: Configuration = {
-    endpoint_url: "http://localhost:1337",
+    endpoint_url: "https://thewilleygithubio-backend-production.up.railway.app",
     github_username: "TheWilley"
 }
 
