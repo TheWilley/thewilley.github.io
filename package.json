@@ -26,7 +26,6 @@
     "react-markdown": "^8.0.7",
     "react-parallax-tilt": "^1.7.145",
     "react-router-dom": "^6.11.2",
-    "react-spinners": "^0.13.8",
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {

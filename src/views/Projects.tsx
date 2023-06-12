@@ -35,7 +35,7 @@ function Projects() {
                     repo_list.push(
                         <li key={repo.html_url}>
                             <Tilt tiltReverse={true} className="h-full">
-                                <div className="h-full relative block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                <div className="h-full relative block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate">{repo.name}</h5>
                                     <p className="font-normal text-gray-700 dark:text-gray-400">{repo.description}</p>
                                     <div className="pt-12">
@@ -71,7 +71,7 @@ function Projects() {
                 return (
                     <>
                         <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Projects </h1>
-                        <ul className="list-none container m-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <ul className="list-none container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {renderRepos()}
                         </ul>
                     </>

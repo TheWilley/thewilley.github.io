@@ -27,7 +27,7 @@ function Blog() {
     const allPosts = posts && posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
-                <div className="max-w-sm rounded overflow-hidden shadow-lg">
+                <div className="rounded overflow-hidden shadow-lg">
                     <img className="w-full" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.url}`} loading="lazy"/>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>
@@ -60,7 +60,7 @@ function Blog() {
                 return (
                     <>
                         <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Blog </h1>
-                        <ul className="list-none container grid md:grid-cols-1 lg:grid-cols-2 gap-2">
+                        <ul className="list-none container grid sm_grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                             {allPosts}
                         </ul>
                     </>
