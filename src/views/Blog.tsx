@@ -27,7 +27,7 @@ function Blog() {
     const allPosts = posts && posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
-                <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100">
+                <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100 p-3">
                     <div className='border'>
                     <img className="w-full max-h-80 object-cover" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
                     </div>

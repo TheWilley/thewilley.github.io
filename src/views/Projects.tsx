@@ -68,7 +68,7 @@ function Projects() {
                 return (
                     <>
                         <h1 className="text-center text-5xl font-bold mb-5 text-blue-500"> Projects </h1>
-                        <ul className="list-none container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                             {renderRepos()}
                         </ul>
                     </>

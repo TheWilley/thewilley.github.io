@@ -26,7 +26,7 @@ function Post() {
                 )
             } else {
                 return (
-                    <>
+                    <div className='max-w-screen-2xl p-3'>
                         <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.formats.medium.url}`} className='h-96 max-h-64 w-full object-cover border' loading="lazy" />
                         <div>
                             <h1 className="lg:text-5xl md:text-3xl sm:text-2xl text-xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
@@ -40,7 +40,7 @@ function Post() {
                                 </Markdown>
                             </div>
                         </div >
-                    </>
+                    </div>
                 )
             }
         }
