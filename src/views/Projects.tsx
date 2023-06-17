@@ -33,12 +33,12 @@ function Projects() {
                 if (repo.description != null) {
                     repo_list.push(
                         <li key={repo.html_url}>
-                            <div className="h-full relative block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100">
-                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate">{repo.name}</h5>
-                                <p className="font-normal text-gray-700">{repo.description}</p>
+                            <div className="h-full relative block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 over:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
+                                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate dark:text-white">{repo.name}</h5>
+                                <p className="font-normal text-gray-600 dark:text-gray-400">{repo.description}</p>
                                 <div className="pt-12">
-                                    <div className="absolute bottom-0 left-0 text-center w-full">
-                                        <hr className='mt-1 mb-1' />
+                                    <div className="absolute bottom-0 left-0 text-center w-full dark:invert">
+                                        <hr className='mt-1 mb-1 dark:invert' />
                                         {repo.homepage && <a href={repo.homepage} className="block m-3 inline-block text-xl" target='_blank'> <FontAwesomeIcon icon={faLink} className="hover:opacity-50" /> </a>}
                                         <a href={repo.html_url} className="block m-3 inline-block text-xl" target='_blank'> <FontAwesomeIcon icon={faGithub} className="hover:opacity-50" /> </a>
                                     </div>

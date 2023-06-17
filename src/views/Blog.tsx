@@ -27,20 +27,18 @@ function Blog() {
     const allPosts = posts && posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
-                <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100 p-3">
-                    <div className='border'>
-                    <img className="w-full max-h-80 object-cover" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
-                    </div>
+                <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
+                    <img className="w-full max-h-80 object-cover rounded" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
                     <div className="px-6 py-4">
-                        <div className="font-bold text-xl mb-2 text-gray-700">{post.attributes.title}</div>
-                        <p className="text-gray-900 text-base">
+                        <div className="font-bold text-xl mb-2 text-gray-700  dark:text-white">{post.attributes.title}</div>
+                        <p className="text-gray-900 text-base dark:text-white">
                             {posts.data[0].attributes.descritpion}
                         </p>
                         <hr className="m-2" />
-                        <p className="text-gray-600 text-xs text-base italic">{<FontAwesomeIcon icon={faClock} />}{` Posted on ${convertDateAndTime(post.attributes.publishedAt)}`}</p>
+                        <p className="text-gray-600 text-xs text-base italic dark:text-gray-400">{<FontAwesomeIcon icon={faClock} />}{` Posted on ${convertDateAndTime(post.attributes.publishedAt)}`}</p>
                         <div className="mt-1" />
                         {convertDateAndTime(post.attributes.publishedAt) !== convertDateAndTime(post.attributes.updatedAt) &&
-                            <p className="text-gray-600 text-xs text-base italic">{<FontAwesomeIcon icon={faPenToSquare} />}{" Updated on " + convertDateAndTime(post.attributes.updatedAt)}</p>
+                            <p className="text-gray-600 text-xs text-base italic dark:text-gray-400">{<FontAwesomeIcon icon={faPenToSquare} />}{" Updated on " + convertDateAndTime(post.attributes.updatedAt)}</p>
                         }
 
                     </div>
