@@ -78,7 +78,6 @@ function Sidebar() {
                     <SidebarPro
                         backgroundColor={themes[theme].sidebar.backgroundColor}
                         className='h-full'
-                        collapsed={collapsed}
                         toggled={toggled}
                         onBackdropClick={() => setToggled(false)}
                         onBreakPoint={setBroken}
