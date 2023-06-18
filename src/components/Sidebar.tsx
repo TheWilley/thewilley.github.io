@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
 function Sidebar() {
-    const [collapsed, setCollapsed] = useState(true)
     const [toggled, setToggled] = useState(false)
     const [broken, setBroken] = useState(false)
     const [theme, setTheme] = useState<'light' | 'dark'>('light')
