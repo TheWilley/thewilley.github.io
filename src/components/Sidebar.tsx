@@ -83,9 +83,9 @@ function Sidebar() {
                         onBreakPoint={setBroken}
                         breakPoint='sm'
                         width='200px'
+                        collapsed={true}
                         rootStyles={{
                             color: themes[theme].sidebar.color,
-
                         }}>
                         <Menu menuItemStyles={menuItemsStyles}>
                             <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/" />} icon={<FontAwesomeIcon icon={faHouse} className='ml-2' />}> Home </MenuItem>
