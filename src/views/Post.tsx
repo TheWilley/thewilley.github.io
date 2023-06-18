@@ -34,7 +34,7 @@ function Post() {
                                 <span> · {" Updated " + convertDateAndTime(post.data.attributes.updatedAt)}</span>
                             }</p>
                             <hr className='mt-2 mb-2' />
-                            <div className='markdown-body dark:!bg-neutral-900'>
+                            <div className='markdown-body dark:!bg-neutral-950'>
                                 <Markdown>
                                     {String(post?.data.attributes.contents)}
                                 </Markdown>
