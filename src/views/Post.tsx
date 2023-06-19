@@ -4,17 +4,33 @@
     Displays a given blog post
 /*/
 
-import { motion, useAnimate } from 'framer-motion'
-import Markdown from 'markdown-to-jsx'
-import { useEffect, useState } from 'react'
-import configuration from '../config'
-import { convertDateAndTime } from '../helpers/helpers'
-import 'github-markdown-css'
+import { motion, useAnimate } from 'framer-motion';
+import 'github-markdown-css';
+import 'highlight.js/styles/github.css';
+import Markdown from 'markdown-to-jsx';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
+import { ReactElement } from 'react-markdown/lib/react-markdown';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import configuration from '../config';
+import { convertDateAndTime } from '../helpers/helpers';
 
 function Post() {
     const [post, setPost] = useState<Post | null>()
     const [scope, animate] = useAnimate()
 
+    // Codeblock component for markdown-to-jsx
+    const CodeBlock: FC<PropsWithChildren> = ({ children }) => {
+        children = children as ReactElement
+          
+        const launguage = children.props.className ? children.props.className.replace('lang-', '') : ''
+        return (
+            <SyntaxHighlighter language={launguage}>
+                {children.props.children}
+            </SyntaxHighlighter>
+        )
+    };
+
+    // Renders the post
     const renderPost = () => {
         if (post != undefined) {
             if (post == null) {
@@ -35,12 +51,16 @@ function Post() {
                             }</p>
                             <hr className='mt-2 mb-2' />
                             <div className='markdown-body dark:!bg-neutral-950'>
-                                <Markdown>
+                                <Markdown options={{
+                                    overrides: {
+                                        pre: CodeBlock
+                                    },
+                                }}>
                                     {String(post?.data.attributes.contents)}
                                 </Markdown>
                             </div>
                         </div >
-                    </div>
+                    </div >
                 )
             }
         }

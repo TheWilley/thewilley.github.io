@@ -6,12 +6,11 @@
 
 import { faClock, faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { motion } from "framer-motion"
+import { motion, useAnimate } from "framer-motion"
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import configuration from "../config"
 import { convertDateAndTime, convertToURI } from "../helpers/helpers"
-import { useAnimate } from "framer-motion"
 
 function Blog() {
     /**
