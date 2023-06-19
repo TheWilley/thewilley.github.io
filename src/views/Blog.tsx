@@ -28,7 +28,7 @@ function Blog() {
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
-                    <img className="w-full max-h-80 object-cover rounded" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} />
+                    <img className="w-full max-h-80 object-cover rounded" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} width='350px' height='320px'/>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700  dark:text-white">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base dark:text-white">
