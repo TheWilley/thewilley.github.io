@@ -32,7 +32,7 @@ function Blog() {
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700  dark:text-white">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base dark:text-white">
-                            {posts.data[0].attributes.descritpion}
+                            {post.attributes.descritpion}
                         </p>
                         <hr className="m-2" />
                         <p className="text-gray-600 text-xs text-base italic dark:text-gray-400">{<FontAwesomeIcon icon={faClock} />}{` Posted on ${convertDateAndTime(post.attributes.publishedAt)}`}</p>
