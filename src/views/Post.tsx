@@ -6,7 +6,6 @@
 
 import { motion, useAnimate } from 'framer-motion';
 import 'github-markdown-css';
-import 'highlight.js/styles/github.css';
 import Markdown from 'markdown-to-jsx';
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { ReactElement } from 'react-markdown/lib/react-markdown';
