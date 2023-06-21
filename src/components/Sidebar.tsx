@@ -19,7 +19,7 @@ function Sidebar() {
         } else {
             setTheme('light')
         }
-    }, []);
+    }, [theme]);
 
     // Themes
     const themes = {

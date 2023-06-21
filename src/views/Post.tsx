@@ -10,12 +10,27 @@ import Markdown from 'markdown-to-jsx';
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { ReactElement } from 'react-markdown/lib/react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import {stackoverflowDark, stackoverflowLight} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import configuration from '../config';
 import { convertDateAndTime } from '../helpers/helpers';
 
 function Post() {
     const [post, setPost] = useState<Post | null>()
     const [scope, animate] = useAnimate()
+    const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+    // To check for mode
+    useEffect(() => {
+        const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches;
+
+        if (prefersDark) {
+            setTheme('dark')
+        } else {
+            setTheme('light')
+        }
+    }, [theme]);
 
     // Codeblock component for markdown-to-jsx
     const CodeBlock: FC<PropsWithChildren> = ({ children }) => {
@@ -23,7 +38,7 @@ function Post() {
           
         const launguage = children.props.className ? children.props.className.replace('lang-', '') : ''
         return (
-            <SyntaxHighlighter language={launguage}>
+            <SyntaxHighlighter language={launguage} style={theme == 'light' ? stackoverflowLight : stackoverflowDark}>
                 {children.props.children}
             </SyntaxHighlighter>
         )
