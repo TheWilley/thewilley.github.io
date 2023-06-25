@@ -9,43 +9,66 @@ import '../css/index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBlog, faHammer } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import logo from '../assets/logo.png'
 
 function Home() {
+    const newlineText = (srt: string) => {
+        const text = srt
+        const newText = text.split('\n\n').map(str => <> <div className='m-5'>{str}</div></>);
+
+        return newText;
+    }
+
+    const intro = `
+        "Ah, the lone wolf of web development! Welcome, brave adventurer, to the extraordinary world of solitary coding and solo web mastery. In this digital wilderness, you are the sole architect, designer, and troubleshooter of your own virtual kingdom. So grab your keyboard, buckle up, and prepare for a whimsical journey through the trials and triumphs of being a one-person web development powerhouse!
+
+        Picture this: a lone developer hunched over a desk, surrounded by towering stacks of pizza boxes, empty coffee cups, and a smorgasbord of tangled cables. The world outside may see a solitary figure, but little do they know that behind those tired eyes lies a mind teeming with creativity, determination, and an insatiable thirst for technological excellence.
+
+        You, my friend, are a digital superhero, armed with a potent combination of coding prowess, design finesse, and an unwavering dedication to crafting remarkable websites. With your trusty keyboard as your weapon, you conquer challenges that would make ordinary mortals tremble. Bugs, glitches, and compatibility woes? Mere obstacles on your path to web supremacy.
+
+        As a single developer, you possess a unique blend of skills that few can match. You're a master of multiple programming languages, dancing effortlessly between HTML, CSS, JavaScript, and more. Your fingers fly across the keyboard, transforming lines of code into captivating interfaces that captivate and delight users.
+
+        But being a one-person powerhouse doesn't mean you're all work and no play. Oh no, you understand the importance of keeping your spirits high amidst the solitary coding marathon. You know that humor and a healthy dose of tech-savvy wit are your trusty companions on this adventure. So, while the world may not witness the hilarious banter you have with your computer screen, you know that laughter is the fuel that keeps your coding engine running smoothly.
+
+        You're not just a developer; you're an entire team bundled into one extraordinary package. You're the creative genius, the meticulous tester, the tireless debugger, and the tireless cheerleader of your own projects. You revel in the thrill of seeing your visions come to life, from the initial spark of an idea to the triumphant launch of a pixel-perfect masterpiece.
+
+        So, my solitary friend, as you embark on this incredible journey through the vast digital expanse, remember this: you are a force to be reckoned with. Your passion, skills, and indomitable spirit set you apart. Embrace the challenges, relish the victories, and never forget to inject a touch of your unique personality into every line of code you write.
+
+        Welcome to the enchanting world of solitary web development, where you're the solo star of the show. Embrace the adventure, laugh in the face of complexity, and build websites that leave the world in awe of your single-handed brilliance. The digital frontier awaits your indelible mark, oh mighty developer. Unleash your coding magic and let the world marvel at your extraordinary talent!"
+    `
+
     return (
-        <motion.div className='text-black p-2 dark:text-white' initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+        <motion.div className='text-black p-2 dark:text-white pt-0 w-full max-w-screen-lg' initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
             <div>
-                <h1 className='mt-2 font-mono text-3xl'> TheWilley </h1>
-                <i> William Larsson </i>
+                <div className='flex items-center mb-3'>
+                    <img src={logo} className='mr-4 w-16 md:w-32 xl:w-44 rounded-md mt-4' />
+                    <div>
+                        <h1 className='xl:text-9xl text-4xl md:text-7xl mt-2 font-mono'>TheWilley</h1>
+                        <p className='xl:text-6xl text-xl md:text-4xl ml-7 font-mono'>William Larsson</p>
+                    </div>
+                </div>
+
             </div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum odio felis, ullamcorper sed gravida nec, tincidunt vel ligula. Fusce sagittis enim non metus gravida cursus. Cras quam mi, viverra sit amet scelerisque at, facilisis eget lorem. Donec quis ultrices elit. Donec nec eros ut justo tincidunt accumsan. Vivamus pulvinar maximus massa, ut condimentum justo mollis in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris ut consectetur velit. Suspendisse vestibulum nec velit a volutpat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-
-                Donec a rutrum sapien, id semper lacus. Nunc at sapien diam. Aliquam quis tortor lacus. Etiam gravida, enim et vestibulum molestie, justo nunc vehicula magna, vulputate malesuada ex lorem vel erat. Quisque cursus commodo consectetur. Vivamus eu viverra augue, ac pharetra metus. Phasellus risus ex, porta fermentum augue vitae, pretium efficitur justo. Curabitur convallis tellus vel justo imperdiet, sed placerat metus fringilla. Sed mattis convallis semper. Sed non mi rhoncus, malesuada lacus quis, interdum ipsum. Maecenas eleifend mauris eget augue tincidunt malesuada. Maecenas et dui vel justo semper dignissim. In hac habitasse platea dictumst.
-
-                Morbi iaculis augue quis feugiat accumsan. Sed arcu eros, blandit eu sollicitudin id, vulputate sit amet massa. Suspendisse facilisis commodo nunc efficitur imperdiet. Donec aliquet, elit et mollis dictum, lacus dolor consequat purus, ut scelerisque est erat a sapien. Aliquam varius magna laoreet fringilla sodales. Sed accumsan massa eu quam laoreet consequat. Integer vehicula sem nulla, vel malesuada mi volutpat sed. Morbi et iaculis augue. Aenean commodo urna ac ante tempus auctor. Vestibulum ut massa id tellus iaculis maximus id nec urna. Donec sed fringilla purus, eget congue ipsum. Nunc tempor ligula nec volutpat scelerisque. In feugiat libero sed lobortis semper. Donec facilisis egestas dolor ut vehicula.
-
-                In at dolor vitae erat vestibulum placerat. Morbi nec suscipit ante. Morbi varius aliquam ex et lacinia. Praesent ornare, dui ut sagittis vestibulum, lectus orci fringilla erat, eget cursus mi nisl in felis. Aliquam erat volutpat. Vivamus molestie egestas dapibus. Ut ac ante enim.
-
-                Donec eu nisl quis urna euismod malesuada ut id arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque id auctor quam. Curabitur vel velit turpis. Nullam facilisis mattis libero sed dapibus. Aenean pellentesque tellus turpis, id vulputate sem iaculis non. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas ultrices elit purus, a fringilla magna fermentum non. Quisque scelerisque iaculis massa.
+            <p className='font-mono border'>
+                {newlineText(intro)}
             </p>
 
             <div className='grid place-items-center grid-cols-2'>
-                <div className='w-full mt-5 h-32'>
+                <div className='w-full h-28'>
                     <Link to="/blog">
-                        <div className='border rounded flex items-center justify-center h-full'>
+                        <div className='border flex items-center justify-center h-full'>
                             <FontAwesomeIcon icon={faBlog} className='ml-2 ' />
                         </div>
                     </Link>
                 </div>
-                <div className='w-full mt-5  h-32'>
+                <div className='w-full h-28'>
                     <Link to="/projects">
-                        <div className='border rounded w-98 flex items-center justify-center h-full'>
+                        <div className='border flex items-center justify-center h-full'>
                             <FontAwesomeIcon icon={faHammer} className='ml-2' />
                         </div>
                     </Link>
                 </div>
             </div>
-
         </motion.div>
     )
 }

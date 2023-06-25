@@ -1,4 +1,4 @@
-import { faBlog, faHammer, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBlog, faHammer, faHouse, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Sidebar as SidebarPro, Menu, MenuItem, MenuItemStyles } from 'react-pro-sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
@@ -88,8 +88,7 @@ function Sidebar() {
                             color: themes[theme].sidebar.color,
                         }}>
                         <Menu menuItemStyles={menuItemsStyles}>
-                            {/* TODO: Finish the homepage and add it back */}
-                            {/* <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/" />} icon={<FontAwesomeIcon icon={faHouse} className='ml-2' />}> Home </MenuItem> */}
+                            <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/" />} icon={<FontAwesomeIcon icon={faHouse} className='ml-2' />}> Home </MenuItem>
                             <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/blog" />} icon={<FontAwesomeIcon icon={faBlog} className='ml-2' />}> Blog </MenuItem>
                             <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/projects" />} icon={<FontAwesomeIcon icon={faHammer} className='ml-2' />}> projects </MenuItem>
                         </Menu>
