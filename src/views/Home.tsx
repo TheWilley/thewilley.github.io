@@ -38,7 +38,7 @@ function Home() {
     `
 
     return (
-        <motion.div className='text-black p-2 dark:text-white pt-0 w-full max-w-screen-lg' initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+        <motion.div className='p-2 pt-0 w-full max-w-screen-lg' initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
             <div>
                 <div className='flex items-center mb-3'>
                     <img src={logo} className='mr-4 w-16 md:w-32 xl:w-44 rounded-md mt-4' />
