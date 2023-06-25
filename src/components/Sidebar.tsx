@@ -88,7 +88,8 @@ function Sidebar() {
                             color: themes[theme].sidebar.color,
                         }}>
                         <Menu menuItemStyles={menuItemsStyles}>
-                            <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/" />} icon={<FontAwesomeIcon icon={faHouse} className='ml-2' />}> Home </MenuItem>
+                            {/* TODO: Finish the homepage and add it back */}
+                            {/* <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/" />} icon={<FontAwesomeIcon icon={faHouse} className='ml-2' />}> Home </MenuItem> */}
                             <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/blog" />} icon={<FontAwesomeIcon icon={faBlog} className='ml-2' />}> Blog </MenuItem>
                             <MenuItem onClick={() => { setToggled(false) }} component={<Link to="/projects" />} icon={<FontAwesomeIcon icon={faHammer} className='ml-2' />}> projects </MenuItem>
                         </Menu>

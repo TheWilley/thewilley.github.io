@@ -10,7 +10,7 @@ import { motion, useAnimate } from "framer-motion"
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import configuration from "../config"
-import { convertDateAndTime, convertToURI } from "../helpers/helpers"
+import { convertDateAndTime, convertToURI, getPosts } from "../helpers/helpers"
 
 function Blog() {
     /**
@@ -72,14 +72,10 @@ function Blog() {
      * Fetches the blog data onload
      */
     useEffect(() => {
-        fetch(`${configuration.endpoint_url}/api/blog-posts?populate=*`)
-            .then(data => data.text())
-            .then(posts => setPosts(JSON.parse(posts)))
-            .catch(() => setPosts(null))
-            .finally(() => {
-                console.log(posts)
-                animate(scope.current, { transform: 'scale(1)', opacity: 1 })
-            })
+        getPosts((posts) => {
+            setPosts(posts)
+            animate(scope.current, { transform: 'scale(1)', opacity: 1 })
+        })
     }, [])
 
     return (

@@ -9,20 +9,18 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion, useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
-import configuration from "../config";
+import { getRepos } from '../helpers/helpers';
 
 function Projects() {
     const [repos, setRepos] = useState<Repo[] | null>([])
     const [scope, animate] = useAnimate()
 
     useEffect(() => {
-        fetch(`https://api.github.com/users/${configuration.github_username}/repos`)
-            .then(response => response.text())
-            .then(repos => setRepos(JSON.parse(repos)))
-            .catch(() => setRepos(null))
-            .finally(() => {
-                animate(scope.current, { transform: 'scale(1)', opacity: 1 })
-            })
+        getRepos((repos) => {
+            console.log(repos)
+            setRepos(repos)
+            animate(scope.current, { transform: 'scale(1)', opacity: 1 })
+        })
     }, [])
 
     function renderRepos() {

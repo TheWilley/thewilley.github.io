@@ -1,3 +1,5 @@
+import configuration from "../config";
+
 /**
  * Converts a date string to a reader friendly format
  * @param date The date to convert
@@ -31,4 +33,28 @@ const convertToURI = (value: string) => {
         .replace(/^-+|-+$/g, '');
 }
 
-export { convertDateAndTime, convertToURI }
+const getRepos = (callback: (repos:  Repo[] | null) => void) => {
+    let result: Repo[] | null
+
+    fetch(`https://api.github.com/users/${configuration.github_username}/repos`)
+        .then(response => response.text())
+        .then(repos => result = JSON.parse(repos))
+        .catch(() => result = null)
+        .finally(() => {
+            callback(result)
+        })
+}
+
+const getPosts = (callback: (posts: Posts | null ) => void) => {
+    let result: Posts | null 
+
+    fetch(`${configuration.endpoint_url}/api/blog-posts?populate=*`)
+    .then(data => data.text())
+    .then(posts => result = JSON.parse(posts))
+    .catch(() => result = null)
+    .finally(() => {
+        callback(result)
+    })
+}
+
+export { convertDateAndTime, convertToURI, getRepos, getPosts }
