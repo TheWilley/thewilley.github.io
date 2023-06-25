@@ -4,6 +4,7 @@ import Blog from '../views/Blog'
 import Home from '../views/Home'
 import Post from '../views/Post'
 import Projects from '../views/Projects'
+import NotFound from '../views/NotFound'
 
 function AnimatedRouter() {
     const location = useLocation()
@@ -15,6 +16,7 @@ function AnimatedRouter() {
                 <Route path="/blog" element={<Blog />}> Blog </Route>
                 <Route path="/projects" element={<Projects />}> Blog </Route>
                 <Route path="/blog/:id" element={<Post />}> Blog </Route>
+                <Route path='*' element={<NotFound />}/>
             </Routes>
         </AnimatePresence>
     )
