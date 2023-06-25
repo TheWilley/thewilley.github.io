@@ -74,7 +74,7 @@ function Sidebar() {
         return (
             <>
                 <div className='fixed h-full z-10'>
-                    {broken && <button onClick={() => { setToggled(!toggled) }}> <FontAwesomeIcon className='p-3 text-2xl hover:opacity-100 opacity-60 rounded-br-full rounded-tr-full mt-1 drop-shadow-md bg-white dark:bg-neutral-800 dark:text-white' icon={faBars} /> </button>}
+                    {broken && <button onClick={() => { setToggled(!toggled) }}> <FontAwesomeIcon className='p-3 text-2xl hover:opacity-100 opacity-60 rounded-br-full rounded-tr-full mt-2 drop-shadow-md bg-white dark:bg-neutral-800 dark:text-white' icon={faBars} /> </button>}
                     <SidebarPro
                         backgroundColor={themes[theme].sidebar.backgroundColor}
                         className='h-full'

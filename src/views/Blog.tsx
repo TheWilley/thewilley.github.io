@@ -83,7 +83,7 @@ function Blog() {
     }, [])
 
     return (
-        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='p-4'>
+        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='pb-4 pl-4 pr-4'>
             {renderPosts()}
         </motion.div>
     )
