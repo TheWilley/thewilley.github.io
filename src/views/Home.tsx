@@ -6,7 +6,6 @@
 
 import { motion } from 'framer-motion'
 import '../css/index.css'
-import logo from '../assets/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBlog, faHammer } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'

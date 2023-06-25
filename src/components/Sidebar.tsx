@@ -1,4 +1,4 @@
-import { faBlog, faHammer, faHouse, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBlog, faHammer, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Sidebar as SidebarPro, Menu, MenuItem, MenuItemStyles } from 'react-pro-sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
