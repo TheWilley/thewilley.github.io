@@ -26,8 +26,8 @@ function Blog() {
     const allPosts = posts && posts.data.map((post) =>
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
-                <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
-                    <img className="w-full max-h-80 object-cover rounded" src={`${post.attributes.thumbnail.data.attributes.formats.small.url}`} width='350px' height='320px'/>
+                <div className="rounded overflow-hidden min-w-full shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
+                    <img className="w-full max-h-80 object-cover rounded" src={`${post.attributes.thumbnail.data.attributes.url}`} width='350px' height='320px'/>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700  dark:text-white">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base dark:text-white">
@@ -79,7 +79,7 @@ function Blog() {
     }, [])
 
     return (
-        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='w-[90%]'>
             {renderPosts()}
         </motion.div>
     )

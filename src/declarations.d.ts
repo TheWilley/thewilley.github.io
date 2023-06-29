@@ -26,6 +26,7 @@ interface Posts {
                                     url: string
                                 }
                             }
+                            url: string
                         }
                     }
                 }
@@ -58,6 +59,7 @@ interface Post {
                                 url: string
                             }
                         }
+                        url: string
                     }
                 }
             }

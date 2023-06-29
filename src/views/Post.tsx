@@ -57,7 +57,7 @@ function Post() {
             } else {
                 return (
                     <div className='max-w-screen-2xl'>
-                        <img src={`${configuration.endpoint_url}${post?.data.attributes.thumbnail.data.attributes.formats.medium.url}`} className='h-96 max-h-64 w-full object-cover border rounded' loading="lazy" />
+                        <img src={`${post?.data.attributes.thumbnail.data.attributes.url}`} className='h-96 min-w-full max-h-64 w-full object-cover border rounded' loading="lazy" />
                         <div>
                             <h1 className="lg:text-5xl md:text-3xl sm:text-2xl text-xl font-bold mb-2 text-blue-500"> {post?.data.attributes.title} </h1>
                             <p className='text-gray-600 text-sm text-base dark:text-gray-400'> By TheWilley · {`${convertDateAndTime(post.data.attributes.publishedAt)}`} {convertDateAndTime(post?.data.attributes.publishedAt) !== convertDateAndTime(post.data.attributes.updatedAt) &&
