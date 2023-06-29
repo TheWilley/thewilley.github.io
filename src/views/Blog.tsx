@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { motion, useAnimate } from "framer-motion"
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
-import configuration from "../config"
 import { convertDateAndTime, convertToURI, getPosts } from "../helpers/helpers"
 
 function Blog() {
