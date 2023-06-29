@@ -29,7 +29,7 @@ interface Posts {
                         }
                     }
                 }
-                descritpion: string
+                description: string
                 publishedAt: string
                 updatedAt: string
             }

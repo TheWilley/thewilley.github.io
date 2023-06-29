@@ -27,11 +27,11 @@ function Blog() {
         <li key={post.id}>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="rounded overflow-hidden shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
-                    <img className="w-full max-h-80 object-cover rounded" src={`${configuration.endpoint_url}${post.attributes.thumbnail.data.attributes.formats.medium.url}`} width='350px' height='320px'/>
+                    <img className="w-full max-h-80 object-cover rounded" src={`${post.attributes.thumbnail.data.attributes.formats.small.url}`} width='350px' height='320px'/>
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700  dark:text-white">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base dark:text-white">
-                            {post.attributes.descritpion}
+                            {post.attributes.description}
                         </p>
                         <hr className="m-2" />
                         <p className="text-gray-600 text-xs text-base italic dark:text-gray-400">{<FontAwesomeIcon icon={faClock} />}{` Posted on ${convertDateAndTime(post.attributes.publishedAt)}`}</p>

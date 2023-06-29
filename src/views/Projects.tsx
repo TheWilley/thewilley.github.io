@@ -17,7 +17,6 @@ function Projects() {
 
     useEffect(() => {
         getRepos((repos) => {
-            console.log(repos)
             setRepos(repos)
             animate(scope.current, { transform: 'scale(1)', opacity: 1 })
         })
