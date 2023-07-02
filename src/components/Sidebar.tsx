@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useLocation } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react'
-import Typewriter from "typewriter-effect";
 
 function Sidebar() {
     const [currentActive, setCurrentActive] = useState('')
