@@ -9,17 +9,20 @@ html {
 
 html,
 body {
-    height: 100vh;
+    min-height: 100%;
     width: 100vw;
     max-width: 100%; 
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 #root {
     max-width: 1000px;
     min-width: 300px;
     width: 100%;
+    height: 100%;
+    padding-bottom: 30px;
 }
 
 @media (prefers-color-scheme: dark) {
