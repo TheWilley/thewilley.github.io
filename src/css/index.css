@@ -2,11 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    overflow-y: scroll;
+
+}
+
 html,
 body {
     height: 100vh;
     width: 100vw;
     max-width: 100%; 
+    display: flex;
+    justify-content: center;
+}
+
+#root {
+    max-width: 1000px;
+    min-width: 300px;
+    width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {

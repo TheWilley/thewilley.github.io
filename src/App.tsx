@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <Sidebar />
+      <hr className='mt-5' />
       <View />
     </>
   )
