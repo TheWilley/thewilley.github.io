@@ -1,4 +1,4 @@
-import { faBars, faBlog, faHammer, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faHammer, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useLocation } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
