@@ -57,7 +57,7 @@ function Sidebar() {
     }
 
     return (
-        <nav className='z-10 dark:text-white'>
+        <nav className='z-10 dark:text-white mb-5'>
             <ul>
                 {renderSidebar()}
             </ul>

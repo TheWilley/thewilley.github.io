@@ -57,7 +57,7 @@ function Blog() {
 
     return (
         <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='w-full'>
-            <ul className="list-none gap-2">
+            <ul className="list-none gap-2 [&>*:first-child]:mt-0">
                 {allPosts}
             </ul>
         </motion.div>
