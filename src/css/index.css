@@ -25,6 +25,18 @@ body {
     padding-bottom: 30px;
 }
 
+.markdown-body table {
+    width: auto !important;
+}
+
+.markdown-body ul li {
+    list-style: circle !important;
+}
+
+.markdown-body ol li {
+    list-style: decimal !important;
+}
+
 @media (prefers-color-scheme: dark) {
 
     html,

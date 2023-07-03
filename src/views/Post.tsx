@@ -6,13 +6,14 @@
 
 import { motion, useAnimate } from 'framer-motion';
 import 'github-markdown-css';
-import Markdown from 'markdown-to-jsx';
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 import { ReactElement } from 'react-markdown/lib/react-markdown';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import {stackoverflowDark, stackoverflowLight} from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import configuration from '../config';
 import { convertDateAndTime } from '../helpers/helpers';
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
 function Post() {
     const [post, setPost] = useState<Post | null>()
@@ -65,13 +66,9 @@ function Post() {
                             }</p>
                             <hr className='mt-2 mb-2' />
                             <div className='markdown-body dark:!bg-neutral-950'>
-                                <Markdown options={{
-                                    overrides: {
-                                        pre: CodeBlock
-                                    },
-                                }}>
+                                <ReactMarkdown  remarkPlugins={[remarkGfm]}>
                                     {String(post?.data.attributes.contents)}
-                                </Markdown>
+                                </ReactMarkdown>
                             </div>
                         </div >
                     </div >
