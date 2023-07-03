@@ -26,7 +26,7 @@ function Sidebar() {
     const renderCollapsedSidebar = () => {
         return (
             <>
-                <FontAwesomeIcon icon={faBars} className='fixed right-8 top-7 text-2xl cursor-pointer hover:opacity-70 sm:hidden block' onClick={() => setSidebarActive(true)} />
+                <FontAwesomeIcon icon={faBars} className='absolute right-8 top-7 text-2xl cursor-pointer hover:opacity-70 sm:hidden block' onClick={() => setSidebarActive(true)} />
                 <div className={`fixed w-screen h-screen z-10 bg-black opacity-40 sm:hidden block ${!sidebarActive && 'hidden'}`} onClick={() => setSidebarActive(false)} />
                 <div className={`fixed right-0 bg-blue-200  dark:bg-neutral-900 h-screen z-10 text-center text-2xl border-left block sm:hidden transition-all overflow-hidden ease-in-out duration-300 ${sidebarActive ? 'w-32' : 'w-0'}`}>
                     <ul className='[&>*]:p-2'>
