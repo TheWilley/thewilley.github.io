@@ -1,17 +1,10 @@
 import { faBars, faHammer, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useLocation } from 'react-router-dom'
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from 'react'
 
 function Sidebar() {
-    const [currentActive, setCurrentActive] = useState('')
     const [sidebarActive, setSidebarActive] = useState(false)
-
-    const location = useLocation();
-    useEffect(() => {
-        setCurrentActive(location.pathname)
-    }, [location.key, location.pathname]);
 
     const renderItems = () => {
         return (
@@ -39,10 +32,6 @@ function Sidebar() {
                     <ul className='[&>*]:p-2'>
                         {renderItems()}
                     </ul>
-                    <div className='flex justify-center'>
-
-                        <p className='text-blue-500 font-mono [writing-mode:vertical-lr] mt-3 bg-blue-300 dark:bg-blue-900 p-1 rounded'> {currentActive} </p>
-                    </div>
                 </div>
             </>
         )
@@ -57,11 +46,10 @@ function Sidebar() {
                     <h1 className='mt-2 font-mono'>TheWilley</h1>
                 </div>
                 <div className='sm:flex justify-center hidden'>
-                    <div className='rounded w-fit text-xl md:text-3xl border border-4 overflow-hidden p-3'>
+                    <div className='rounded w-fit text-xl md:text-3xl border border-4 overflow-hidden p-1'>
                         <ul className='flex justify-center [&>*]:p-2'>
                             {renderItems()}
                         </ul>
-                        <p className='text-blue-500 mt-3 text-center font-mono bg-blue-300 dark:bg-blue-900 p-1 rounded'> {currentActive} </p>
                     </div>
                 </div>
             </>
