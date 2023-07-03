@@ -23,7 +23,7 @@ function Blog() {
      * @returns The blog entry JSX
      */
     const allPosts = posts && posts.data.map((post) =>
-        <li key={post.id}>
+        <li key={post.id} className='mt-5'>
             <Link to={`/blog/${convertToURI(post.attributes.title)}?id=${post.id}`}>
                 <div className="rounded overflow-hidden min-w-full shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
                     <img className="w-full max-h-80 object-cover rounded" src={`${post.attributes.thumbnail.data.attributes.url}`} width='350px' height='320px' />
