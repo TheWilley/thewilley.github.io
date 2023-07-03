@@ -1,7 +1,7 @@
 import { faBars, faHammer, faHome } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from "react-router-dom";
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 function Sidebar() {
     const [sidebarActive, setSidebarActive] = useState(false)

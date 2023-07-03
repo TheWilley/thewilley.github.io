@@ -6,10 +6,7 @@
 
 import { motion, useAnimate } from 'framer-motion';
 import 'github-markdown-css';
-import { FC, PropsWithChildren, useEffect, useState } from 'react';
-import { ReactElement } from 'react-markdown/lib/react-markdown';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import {stackoverflowDark, stackoverflowLight} from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { useEffect, useState } from 'react';
 import configuration from '../config';
 import { convertDateAndTime } from '../helpers/helpers';
 import ReactMarkdown from 'react-markdown'
@@ -32,18 +29,6 @@ function Post() {
             setTheme('light')
         }
     }, [theme]);
-
-    // Codeblock component for markdown-to-jsx
-    const CodeBlock: FC<PropsWithChildren> = ({ children }) => {
-        children = children as ReactElement
-          
-        const launguage = children.props.className ? children.props.className.replace('lang-', '') : ''
-        return (
-            <SyntaxHighlighter language={launguage} style={theme == 'light' ? stackoverflowLight : stackoverflowDark}>
-                {children.props.children}
-            </SyntaxHighlighter>
-        )
-    };
 
     // Renders the post
     const renderPost = () => {
