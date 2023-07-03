@@ -10,6 +10,7 @@ import { motion, useAnimate } from "framer-motion"
 import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import { convertDateAndTime, convertToURI, getPosts } from "../helpers/helpers"
+import { Helmet } from 'react-helmet'
 
 function Blog() {
     /**
@@ -56,11 +57,16 @@ function Blog() {
     }, [])
 
     return (
-        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='w-full'>
-            <ul className="list-none gap-2 [&>*:first-child]:mt-0">
-                {allPosts}
-            </ul>
-        </motion.div>
+        <>
+            <Helmet>
+                <title>TheWilley | Blog</title>
+            </Helmet>
+            <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='w-full'>
+                <ul className="list-none gap-2 [&>*:first-child]:mt-0">
+                    {allPosts}
+                </ul>
+            </motion.div>
+        </>
     )
 }
 

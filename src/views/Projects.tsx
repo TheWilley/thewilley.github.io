@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion, useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getRepos } from '../helpers/helpers';
+import { Helmet } from 'react-helmet';
 
 function Projects() {
     const [repos, setRepos] = useState<Repo[] | null>([])
@@ -53,11 +54,16 @@ function Projects() {
     }
 
     return (
-        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
-            <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {renderRepos()}
-            </ul>
-        </motion.div>
+        <>
+            <Helmet>
+                <title>TheWilley | Projects</title>
+            </Helmet>
+            <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+                <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {renderRepos()}
+                </ul>
+            </motion.div>
+        </>
     )
 }
 

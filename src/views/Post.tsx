@@ -11,6 +11,7 @@ import configuration from '../config';
 import { convertDateAndTime } from '../helpers/helpers';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import {Helmet} from "react-helmet";
 
 function Post() {
     const [post, setPost] = useState<Post | null>()
@@ -51,7 +52,7 @@ function Post() {
                             }</p>
                             <hr className='mt-2 mb-2' />
                             <div className='markdown-body dark:!bg-neutral-950'>
-                                <ReactMarkdown  remarkPlugins={[remarkGfm]}>
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                     {String(post?.data.attributes.contents)}
                                 </ReactMarkdown>
                             </div>
@@ -79,9 +80,16 @@ function Post() {
     }, [])
 
     return (
-        <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
-            {renderPost()}
-        </motion.div>
+        <>
+            <Helmet>
+                <title>{'TheWilley | ' + post?.data.attributes.title}</title>
+                <meta name="og:title" content={post?.data.attributes.title}></meta>
+                <meta name="og:image" content={post?.data.attributes.thumbnail.data.attributes.url}></meta>
+            </Helmet>
+            <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+                {renderPost()}
+            </motion.div>
+        </>
     )
 }
 
