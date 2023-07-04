@@ -57,4 +57,17 @@ const getPosts = (callback: (posts: Posts | null ) => void) => {
     })
 }
 
-export { convertDateAndTime, convertToURI, getRepos, getPosts }
+const getTimeline = (callback: (posts: Timeline | null ) => void) => {
+    let result: Timeline | null
+
+    fetch(`${configuration.endpoint_url}/api/timeline`)
+    .then(data => data.text())
+    .then(timeline => result = JSON.parse(timeline))
+    .catch(() => result = null)
+    .finally(() => {
+        console.log(result)
+        callback(result)
+    })
+}
+
+export { convertDateAndTime, convertToURI, getRepos, getPosts, getTimeline }

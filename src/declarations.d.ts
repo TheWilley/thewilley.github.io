@@ -74,7 +74,7 @@ interface Post {
 interface Repo {
     description: string
     name: string
-    homepage:string
+    homepage: string
     html_url: string
 }
 
@@ -83,3 +83,37 @@ interface Configuration {
     endpoint_url: string
     github_username: string
 }
+
+// Declaration for the timeline
+interface Timeline {
+    data: {
+        id: string
+        attributes: {
+            data: {
+                messages: [
+                    {
+
+                        id: string;
+                        type: string;
+                        author: {
+                            id: string;
+                            name: string;
+                            color: string;
+                            isBot: boolean;
+                            nickname: string;
+                            avatarUrl: string;
+                            discriminator: string;
+                        };
+                        content: string;
+                        isPinned: boolean;
+                        timestamp: string;
+                        timestampEdited: string | null;
+                        callEndedTimestamp: string | null;
+                    }
+                ]
+            }
+        }
+
+    }
+}
+

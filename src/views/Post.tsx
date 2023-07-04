@@ -75,7 +75,7 @@ function Post() {
             .then(posts => setPost(JSON.parse(posts)))
             .catch(() => setPost(null))
             .finally(() => {
-                animate(scope.current, { transform: 'scale(1)', opacity: 1 })
+                animate(scope.current, { opacity: 1 })
             })
     }, [])
 
@@ -86,7 +86,7 @@ function Post() {
                 <meta name="og:title" content={post?.data.attributes.title}></meta>
                 <meta name="og:image" content={post?.data.attributes.thumbnail.data.attributes.url}></meta>
             </Helmet>
-            <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
                 {renderPost()}
             </motion.div>
         </>

@@ -52,7 +52,7 @@ function Blog() {
     useEffect(() => {
         getPosts((posts) => {
             setPosts(posts)
-            animate(scope.current, { transform: 'scale(1)', opacity: 1 })
+            animate(scope.current, { opacity: 1 })
         })
     }, [])
 
@@ -61,7 +61,7 @@ function Blog() {
             <Helmet>
                 <title>TheWilley | Blog</title>
             </Helmet>
-            <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }} className='w-full'>
+            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 <ul className="list-none gap-2 [&>*:first-child]:mt-0">
                     {allPosts}
                 </ul>

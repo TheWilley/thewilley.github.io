@@ -19,7 +19,7 @@ function Projects() {
     useEffect(() => {
         getRepos((repos) => {
             setRepos(repos)
-            animate(scope.current, { transform: 'scale(1)', opacity: 1 })
+            animate(scope.current, { opacity: 1 })
         })
     }, [])
 
@@ -58,7 +58,7 @@ function Projects() {
             <Helmet>
                 <title>TheWilley | Projects</title>
             </Helmet>
-            <motion.div ref={scope} initial={{ transform: 'scale(0.8)', opacity: 0 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
+            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
                 <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {renderRepos()}
                 </ul>
