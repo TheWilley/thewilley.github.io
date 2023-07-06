@@ -29,7 +29,7 @@ function About() {
                         Hi! My name is William Larsson, but I often go by the name "TheWilley" as my online alias. I have a interest in programming, music, art and generally anything to do with computers.
                         This website was made from the ground up with react, and serves as the primary hub for all things I do. Below you can find some links to my social media platforms, if you want to explore a little more.
                     </p>
-                    <div className="grid grid-cols-3 w-full gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 w-full gap-2">
                         {createSocialMediaItem('bg-red-500', 'bg-red-200', 'TheWilley (TBA)', '', faYoutube, false)}
                         {createSocialMediaItem('bg-red-500', 'bg-blue-200', 'TheWilley Music', 'https://www.youtube.com/channel/UCH0QD9v3h2fwL0-Bc2hM9iQ', faYoutube, true)}
                         {createSocialMediaItem('bg-orange-500', 'bg-blue-200', 'TheWilley', 'https://soundcloud.com/thewilley', faSoundcloud, true)}
