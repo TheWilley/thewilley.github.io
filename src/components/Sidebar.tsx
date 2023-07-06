@@ -1,4 +1,4 @@
-import { faBars, faClock, faHammer, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faClock, faHammer, faHome, faInbox, faInfo, faInfoCircle, faQuestion, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from "react-router-dom";
 import { useState } from 'react'
@@ -23,6 +23,11 @@ function Sidebar() {
                     <NavLink to="/timeline" className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "text-blue-500" : "hover:text-blue-500 transition"
                     }> <FontAwesomeIcon icon={faClock} onClick={() => setSidebarActive(false)} /> </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/about" className={({ isActive, isPending }) =>
+                        isPending ? "pending" : isActive ? "text-blue-500" : "hover:text-blue-500 transition"
+                    }> <FontAwesomeIcon icon={faInfoCircle} onClick={() => setSidebarActive(false)} /> </NavLink>
                 </li>
             </>
         )
