@@ -1,4 +1,4 @@
-import { faBars, faClock, faHammer, faHome, faInbox, faInfo, faInfoCircle, faQuestion, faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faClock, faHammer, faHome, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { NavLink } from "react-router-dom";
 import { useState } from 'react'
