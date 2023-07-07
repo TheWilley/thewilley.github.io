@@ -1,7 +1,5 @@
-import { request } from "https";
 import configuration from "../config";
 import Stencil from 'stencil-qs';
-import { callbackify } from "util";
 
 /**
  * Converts a date string to a reader friendly format

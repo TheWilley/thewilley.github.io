@@ -7,7 +7,6 @@
 import { motion, useAnimate } from 'framer-motion';
 import 'github-markdown-css';
 import { useEffect, useState } from 'react';
-import configuration from '../config';
 import { convertDateAndTime, getSinglePost } from '../helpers/helpers';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
