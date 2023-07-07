@@ -8,7 +8,7 @@ import { motion, useAnimate } from 'framer-motion';
 import 'github-markdown-css';
 import { useEffect, useState } from 'react';
 import configuration from '../config';
-import { convertDateAndTime } from '../helpers/helpers';
+import { convertDateAndTime, getSinglePost } from '../helpers/helpers';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import {Helmet} from "react-helmet";
@@ -68,15 +68,12 @@ function Post() {
         const queryIndex = hashFragment.indexOf("?");
         const queryString = hashFragment.slice(queryIndex + 1);
         const queryParameters = new URLSearchParams(queryString);
-        const id = queryParameters.get("id");
+        const id = Number(queryParameters.get("id"));
 
-        fetch(`${configuration.endpoint_url}/api/blog-posts/${id}?populate=*`)
-            .then(data => data.text())
-            .then(posts => setPost(JSON.parse(posts)))
-            .catch(() => setPost(null))
-            .finally(() => {
-                animate(scope.current, { opacity: 1 })
-            })
+        getSinglePost((post) => {
+            setPost(post)
+            animate(scope.current, { opacity: 1 })
+        }, id)
     }, [])
 
     return (

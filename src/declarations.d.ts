@@ -92,23 +92,11 @@ interface Timeline {
             data: {
                 messages: [
                     {
-
-                        id: string;
-                        type: string;
                         author: {
-                            id: string;
                             name: string;
-                            color: string;
-                            isBot: boolean;
-                            nickname: string;
-                            avatarUrl: string;
-                            discriminator: string;
                         };
                         content: string;
-                        isPinned: boolean;
                         timestamp: string;
-                        timestampEdited: string | null;
-                        callEndedTimestamp: string | null;
                     }
                 ]
             }

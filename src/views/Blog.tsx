@@ -59,7 +59,7 @@ function Blog() {
     return (
         <>
             <Helmet>
-                <title>TheWilley | Blog</title>
+                <title>TheWilley | Home</title>
             </Helmet>
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 <ul className="list-none gap-2 [&>*:first-child]:mt-0">

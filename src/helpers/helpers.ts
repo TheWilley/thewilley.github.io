@@ -1,4 +1,7 @@
+import { request } from "https";
 import configuration from "../config";
+import Stencil from 'stencil-qs';
+import { callbackify } from "util";
 
 /**
  * Converts a date string to a reader friendly format
@@ -33,41 +36,38 @@ const convertToURI = (value: string) => {
         .replace(/^-+|-+$/g, '');
 }
 
-const getRepos = (callback: (repos:  Repo[] | null) => void) => {
-    let result: Repo[] | null
+const getRepos = async (callback: (repos: Repo[] | null) => void) => {
+    const response = await (await fetch(`https://api.github.com/users/${configuration.github_username}/repos`)).json();
+    console.log(response)
+    callback(response)
 
-    fetch(`https://api.github.com/users/${configuration.github_username}/repos`)
-        .then(response => response.text())
-        .then(repos => result = JSON.parse(repos))
-        .catch(() => result = null)
-        .finally(() => {
-            callback(result)
-        })
 }
 
-const getPosts = (callback: (posts: Posts | null ) => void) => {
-    let result: Posts | null 
+const getSinglePost = async (callback: (post: Post | null) => void, id: number) => {
+    const query = Stencil.stringify({
+        fields: ["title", "contents", "updatedAt", "publishedAt"],
+        populate: ['thumbnail'],
+        sort: ["id:desc"],
+    });
 
-    fetch(`${configuration.endpoint_url}/api/blog-posts?populate=*`)
-    .then(data => data.text())
-    .then(posts => result = JSON.parse(posts))
-    .catch(() => result = null)
-    .finally(() => {
-        callback(result)
-    })
+    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts/${id}?${query}`)).json();
+    callback(response)
 }
 
-const getTimeline = (callback: (posts: Timeline | null ) => void) => {
-    let result: Timeline | null
+const getPosts = async (callback: (posts: Posts | null) => void) => {
+    const query = Stencil.stringify({
+        fields: ["title", "contents", "updatedAt", "publishedAt"],
+        populate: ['thumbnail'],
+        sort: ["id:desc"],
+    });
 
-    fetch(`${configuration.endpoint_url}/api/timeline`)
-    .then(data => data.text())
-    .then(timeline => result = JSON.parse(timeline))
-    .catch(() => result = null)
-    .finally(() => {
-        console.log(result)
-        callback(result)
-    })
+    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json();
+    callback(response)
 }
 
-export { convertDateAndTime, convertToURI, getRepos, getPosts, getTimeline }
+const getTimeline = async (callback: (posts: Timeline | null) => void) => {
+    const response = await (await fetch(`${configuration.endpoint_url}/api/timeline`)).json();
+    callback(response)
+}
+
+export { convertDateAndTime, convertToURI, getRepos, getPosts, getTimeline, getSinglePost }
