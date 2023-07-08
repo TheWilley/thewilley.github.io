@@ -21,6 +21,10 @@ const convertDateAndTime = (date: string) => {
     return formattedDate
 }
 
+/**
+ * Gets all respos and runs a callback function with the return value
+ * @param callback The callback function to run
+ */
 const getRepos = async (callback: (repos: Repo[] | null) => void) => {
     const response = await (await fetch(`https://api.github.com/users/${configuration.github_username}/repos`)).json();
     console.log(response)
@@ -28,6 +32,10 @@ const getRepos = async (callback: (repos: Repo[] | null) => void) => {
 
 }
 
+/**
+ * Gets a single post and runs a callback function with the return value
+ * @param callback The callback function to run
+ */
 const getSinglePost = async (callback: (post: Posts | null) => void, id: string | undefined) => {
     const query = Stencil.stringify({
         fields: ["title", "contents", "updatedAt", "publishedAt", "slug"],
@@ -47,6 +55,10 @@ const getSinglePost = async (callback: (post: Posts | null) => void, id: string 
     callback(response)
 }
 
+/**
+ * Gets all posts and runs a callback function with the return value
+ * @param callback The callback function to run
+ */
 const getPosts = async (callback: (posts: Posts | null) => void) => {
     const query = Stencil.stringify({
         fields: ["title", "contents", "updatedAt", "publishedAt", "slug"],
@@ -59,6 +71,10 @@ const getPosts = async (callback: (posts: Posts | null) => void) => {
     callback(response)
 }
 
+/**
+ * Gets the timeline
+ * @param callback he callback function to run
+ */
 const getTimeline = async (callback: (posts: Timeline | null) => void) => {
     const response = await (await fetch(`${configuration.endpoint_url}/api/timeline`)).json();
     callback(response)
