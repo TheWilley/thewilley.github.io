@@ -5,7 +5,7 @@
 /*/
 
 const configuration: Configuration = {
-    endpoint_url: "http://localhost:1337",
+    endpoint_url: "https://strapi-production-aa7f.up.railway.app",
     github_username: "TheWilley"
 }
 
