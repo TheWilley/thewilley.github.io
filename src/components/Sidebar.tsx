@@ -10,11 +10,6 @@ function Sidebar() {
         return (
             <>
                 <li>
-                    <NavLink className={({ isActive, isPending }) =>
-                        isPending ? "pending" : isActive ? "text-blue-500" : "hover:text-blue-500 transition"
-                    } to="/"> <FontAwesomeIcon icon={faHome} onClick={() => setSidebarActive(false)} /> </NavLink>
-                </li>
-                <li>
                     <NavLink to="/projects" className={({ isActive, isPending }) =>
                         isPending ? "pending" : isActive ? "text-blue-500" : "hover:text-blue-500 transition"
                     }> <FontAwesomeIcon icon={faHammer} onClick={() => setSidebarActive(false)} /> </NavLink>
