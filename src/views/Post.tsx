@@ -38,7 +38,7 @@ function Post() {
             if (found_post != undefined) {
                 return (
                     <div className='max-w-screen-2xl'>
-                        <img src={`${found_post.attributes.thumbnail.data.attributes.url}`} className='h-96 min-w-full max-h-64 w-full object-cover border dark:border-slate-500 rounded' loading="lazy" />
+                        <img src={`${found_post.attributes.thumbnail.data.attributes.url}`} className='aspect-video w-full object-cover border dark:border-slate-500 rounded' loading="lazy" />
                         <div>
                             <h1 className="lg:text-5xl md:text-3xl sm:text-2xl text-xl font-bold mb-2 text-blue-500"> {found_post.attributes.title} </h1>
                             <p className='text-gray-600 text-sm text-base dark:text-gray-400'> By TheWilley · {`${convertDateAndTime(found_post.attributes.publishedAt)}`} {convertDateAndTime(found_post.attributes.publishedAt) !== convertDateAndTime(found_post.attributes.updatedAt) &&

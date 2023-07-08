@@ -27,7 +27,7 @@ function Blog() {
         <li key={post.id} className='mt-5'>
             <Link to={`/blog/${post.attributes.slug}`}>
                 <div className="rounded overflow-hidden min-w-full shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
-                    <img className="w-full max-h-80 object-cover rounded" src={`${post.attributes.thumbnail.data.attributes.url}`} width='350px' height='320px' />
+                    <img className="w-full aspect-video object-cover rounded" src={`${post.attributes.thumbnail.data.attributes.url}`} width='350px' height='320px' />
                     <div className="px-6 py-4">
                         <div className="font-bold text-xl mb-2 text-gray-700  dark:text-white">{post.attributes.title}</div>
                         <p className="text-gray-900 text-base dark:text-white">
