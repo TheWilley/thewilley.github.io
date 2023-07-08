@@ -10,6 +10,7 @@ interface Posts {
         {
             id: string
             attributes: {
+                slug: string
                 contents: string
                 title: string
                 thumbnail: {
@@ -36,38 +37,6 @@ interface Posts {
             }
         }
     ]
-}
-
-// Declaration for a single blog post
-interface Post {
-    data: {
-        id: string
-        attributes: {
-            contents: string
-            title: string
-            thumbnail: {
-                data: {
-                    attributes: {
-                        formats: {
-                            small: {
-                                url: string
-                            }
-                            medium: {
-                                url: string
-                            }
-                            large: {
-                                url: string
-                            }
-                        }
-                        url: string
-                    }
-                }
-            }
-            descritpion: string
-            publishedAt: string
-            updatedAt: string
-        }
-    }
 }
 
 // Declaration for GitHub repos

@@ -21,19 +21,6 @@ const convertDateAndTime = (date: string) => {
     return formattedDate
 }
 
-/**
- * Converts text to a URI friendly URL
- * @param value The text to convert
- * @returns The URL
- */
-const convertToURI = (value: string) => {
-    return value
-        .trim()
-        .toLowerCase()
-        .replace(/[\W_]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-}
-
 const getRepos = async (callback: (repos: Repo[] | null) => void) => {
     const response = await (await fetch(`https://api.github.com/users/${configuration.github_username}/repos`)).json();
     console.log(response)
@@ -41,25 +28,34 @@ const getRepos = async (callback: (repos: Repo[] | null) => void) => {
 
 }
 
-const getSinglePost = async (callback: (post: Post | null) => void, id: number) => {
+const getSinglePost = async (callback: (post: Posts | null) => void, id: string | undefined) => {
     const query = Stencil.stringify({
-        fields: ["title", "contents", "updatedAt", "publishedAt"],
+        fields: ["title", "contents", "updatedAt", "publishedAt", "slug"],
         populate: ['thumbnail'],
+        filters: {
+            // TODO: Properly fix this
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            slug: {
+                $eq: id
+            }
+        },
         sort: ["id:desc"],
     });
 
-    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts/${id}?${query}`)).json();
+    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json();
     callback(response)
 }
 
 const getPosts = async (callback: (posts: Posts | null) => void) => {
     const query = Stencil.stringify({
-        fields: ["title", "contents", "updatedAt", "publishedAt"],
+        fields: ["title", "contents", "updatedAt", "publishedAt", "slug"],
         populate: ['thumbnail'],
         sort: ["id:desc"],
     });
 
     const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json();
+    console.log(response)
     callback(response)
 }
 
@@ -68,4 +64,4 @@ const getTimeline = async (callback: (posts: Timeline | null) => void) => {
     callback(response)
 }
 
-export { convertDateAndTime, convertToURI, getRepos, getPosts, getTimeline, getSinglePost }
+export { convertDateAndTime, getRepos, getPosts, getTimeline, getSinglePost }
