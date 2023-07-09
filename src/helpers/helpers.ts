@@ -27,7 +27,6 @@ const convertDateAndTime = (date: string) => {
  */
 const getRepos = async (callback: (repos: Repo[] | null) => void) => {
     const response = await (await fetch(`https://api.github.com/users/${configuration.github_username}/repos`)).json();
-    console.log(response)
     callback(response)
 
 }
@@ -67,7 +66,6 @@ const getPosts = async (callback: (posts: Posts | null) => void) => {
     });
 
     const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json();
-    console.log(response)
     callback(response)
 }
 

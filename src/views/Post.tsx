@@ -34,7 +34,6 @@ function Post() {
     const renderPost = () => {
         if (post != undefined) {
             const found_post = post.data[post.data.length - 1]
-            console.log(found_post)
             if (found_post != undefined) {
                 return (
                     <div className='max-w-screen-2xl'>
