@@ -34,6 +34,7 @@
     "react-router-dom": "^6.11.2",
     "react-syntax-highlighter": "^15.5.0",
     "react-transition-group": "^4.4.5",
+    "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "stencil-qs": "^1.4.1",
     "tailwindcss": "^3.3.2",
