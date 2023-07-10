@@ -69,7 +69,7 @@ function Post() {
             <Helmet>
                 <title>{`TheWilley | ${post && post.data[post?.data.length - 1].attributes.title}`}</title>
                 <meta name="og:title" content={`${post && post.data[post?.data.length - 1].attributes.title}`}></meta>
-                <meta name="og:image" content={`${post && post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.formats.small.url}`}></meta>
+                <meta name="og:image" content={`${post && post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`}></meta>
             </Helmet>
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 {renderPost()}
