@@ -11,7 +11,6 @@ import { convertDateAndTime, getSinglePost } from '../helpers/helpers';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Helmet } from "react-helmet";
-import rehypeRaw from 'rehype-raw'
 
 function Post() {
     const [post, setPost] = useState<Posts | null>()
@@ -46,7 +45,7 @@ function Post() {
                             }</p>
                             <hr className='mt-2 mb-2' />
                             <div className='markdown-body dark:!bg-neutral-950'>
-                                <ReactMarkdown remarkPlugins={[remarkGfm, rehypeRaw]}>
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
                                     {String(found_post.attributes.contents)}
                                 </ReactMarkdown>
                             </div>
