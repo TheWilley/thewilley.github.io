@@ -2,6 +2,8 @@ import { motion, useAnimate } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { getTimeline } from '../helpers/helpers';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 const imagePerRow = 100
 
@@ -38,7 +40,7 @@ function Timeline() {
     }
 
     const renderList = () => {
-        if (timeline != undefined) {
+        if (timeline && timeline.data) {
             return timeline.data.attributes.data.messages.slice(0, next).map((item, index) => {
                 const fixedContent = fixContent(item.content)
 
@@ -63,14 +65,34 @@ function Timeline() {
                     </li>
                 )
             })
+        } else {
+            return (
+                <div className='text-center text-8xl rounded p-3 h-[60vh] flex items-center justify-center'>
+                    <div className='border border-4 p-3 rounded'>
+                        <FontAwesomeIcon icon={faCircleExclamation} />
+                        <div className='text-3xl ml-2'>
+                            Error loading timeline
+                            <p className='text-2xl'>
+                                Please try again later
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )
         }
+    }
+
+    const getMetaData = () => {
+        return (
+            <Helmet>
+                <title>TheWilley | Timeline</title>
+            </Helmet>
+        )
     }
 
     return (
         <>
-            <Helmet>
-                <title>TheWilley | Timeline</title>
-            </Helmet>
+            {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
                 <div className='text-center text-white bg-green-500 dark:bg-green-800 rounded p-3 w-full'> Welcome! This is the result of a game we played on discord where we came up with fictional events for a timeline. This lead to some pretty wild and fun moments, which I would like to share! </div>
                 <div className={`text-center text-white bg-red-500 dark:bg-red-800 rounded p-3 w-full mt-2 ${iunderstand && 'hidden'}`}>

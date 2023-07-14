@@ -4,14 +4,11 @@
 
 html {
     overflow-y: scroll;
-
 }
 
 html,
 body {
     min-height: 100%;
-    width: 100vw;
-    max-width: 100%; 
     display: flex;
     justify-content: center;
     position: relative;

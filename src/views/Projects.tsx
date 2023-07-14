@@ -23,7 +23,15 @@ function Projects() {
         })
     }, [])
 
-    function renderRepos() {
+    const getMetaData = () => {
+        return (
+            <Helmet>
+                <title>TheWilley | Projects</title>
+            </Helmet>
+        )
+    }
+
+    const renderRepos = () => {
         const repo_list = []
 
         if (repos != undefined) {
@@ -55,9 +63,7 @@ function Projects() {
 
     return (
         <>
-            <Helmet>
-                <title>TheWilley | Projects</title>
-            </Helmet>
+            {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
                 <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {renderRepos()}

@@ -11,6 +11,8 @@ import { convertDateAndTime, getSinglePost } from '../helpers/helpers';
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 function Post() {
     const [post, setPost] = useState<Posts | null>()
@@ -30,9 +32,21 @@ function Post() {
         }
     }, [theme]);
 
+    const getMetaData = () => {
+        if (post && post.data) {
+            return (
+                <Helmet>
+                    <title>{`TheWilley | ${post && post.data[post?.data.length - 1].attributes.title}`}</title>
+                    <meta name="og:title" content={`${post && post.data[post?.data.length - 1].attributes.title}`}></meta>
+                    <meta name="og:image" content={`${post && post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`}></meta>
+                </Helmet>
+            )
+        }
+    }
+
     // Renders the post
     const renderPost = () => {
-        if (post != undefined) {
+        if (post && post.data) {
             const found_post = post.data[post.data.length - 1]
             if (found_post != undefined) {
                 return (
@@ -53,6 +67,20 @@ function Post() {
                     </div >
                 )
             }
+        } else {
+            return (
+                <div className='text-center text-8xl rounded p-3 h-[60vh] flex items-center justify-center'>
+                    <div className='border border-4 p-3 rounded'>
+                        <FontAwesomeIcon icon={faCircleExclamation} />
+                        <div className='text-3xl ml-2'>
+                            Error loading post
+                            <p className='text-2xl'>
+                                Please try again later
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )
         }
     }
 
@@ -66,11 +94,7 @@ function Post() {
 
     return (
         <>
-            <Helmet>
-                <title>{`TheWilley | ${post && post.data[post?.data.length - 1].attributes.title}`}</title>
-                <meta name="og:title" content={`${post && post.data[post?.data.length - 1].attributes.title}`}></meta>
-                <meta name="og:image" content={`${post && post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`}></meta>
-            </Helmet>
+            {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 {renderPost()}
             </motion.div>

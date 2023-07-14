@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import { convertDateAndTime, getPosts } from "../helpers/helpers"
 import { Helmet } from 'react-helmet'
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 
 function Blog() {
     /**
@@ -23,7 +24,7 @@ function Blog() {
      * Creates JSX for a blog entry
      * @returns The blog entry JSX
      */
-    const allPosts = posts && posts.data.map((post) =>
+    const allPosts = posts && posts.data ? posts.data.map((post) =>
         <li key={post.id} className='mt-5'>
             <Link to={`/blog/${post.attributes.slug}`}>
                 <div className="rounded overflow-hidden min-w-full shadow-lg hover:bg-gray-100 p-3 dark:hover:bg-neutral-800 dark:bg-neutral-900 border dark:border-slate-500 dark:border-1">
@@ -44,7 +45,27 @@ function Blog() {
                 </div>
             </Link>
         </li>
+    ) : (
+        <div className='text-center text-8xl rounded p-3 h-[60vh] flex items-center justify-center'>
+            <div className='border border-4 p-3 rounded'>
+                <FontAwesomeIcon icon={faCircleExclamation} />
+                <div className='text-3xl ml-2'>
+                    Error loading blog
+                    <p className='text-2xl'>
+                        Please try again later
+                    </p>
+                </div>
+            </div>
+        </div>
     )
+
+    const getMetaData = () => {
+        return (
+            <Helmet>
+                <title>TheWilley | About</title>
+            </Helmet>
+        )
+    }
 
     /**
      * Fetches the blog data onload
@@ -58,9 +79,7 @@ function Blog() {
 
     return (
         <>
-            <Helmet>
-                <title>TheWilley | Home</title>
-            </Helmet>
+            {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 <ul className="list-none gap-2 [&>*:first-child]:mt-0">
                     {allPosts}

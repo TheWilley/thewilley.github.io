@@ -26,7 +26,7 @@ const convertDateAndTime = (date: string) => {
  * @param callback The callback function to run
  */
 const getRepos = async (callback: (repos: Repo[] | null) => void) => {
-    const response = await (await fetch(`https://api.github.com/users/${configuration.github_username}/repos`)).json();
+    const response = await (await fetch(`https://api.github.com/users/${configuration.github_username}/repos`)).json().catch(console.error)
     callback(response)
 
 }
@@ -50,7 +50,7 @@ const getSinglePost = async (callback: (post: Posts | null) => void, id: string 
         sort: ["id:desc"],
     });
 
-    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json();
+    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json().catch(console.error)
     callback(response)
 }
 
@@ -65,7 +65,7 @@ const getPosts = async (callback: (posts: Posts | null) => void) => {
         sort: ["id:desc"],
     });
 
-    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json();
+    const response = await (await fetch(`${configuration.endpoint_url}/api/blog-posts?${query}`)).json().catch(console.error);
     callback(response)
 }
 
@@ -74,7 +74,7 @@ const getPosts = async (callback: (posts: Posts | null) => void) => {
  * @param callback he callback function to run
  */
 const getTimeline = async (callback: (posts: Timeline | null) => void) => {
-    const response = await (await fetch(`${configuration.endpoint_url}/api/timeline`)).json();
+    const response = await (await fetch(`${configuration.endpoint_url}/api/tieline`)).json().catch(console.error)
     callback(response)
 }
 

@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Helmet } from "react-helmet"
 
 function About() {
-    function createSocialMediaItem(color: string, dark_color: string, text: string, href: string, logo: IconDefinition, allowed: boolean) {
+    const createSocialMediaItem = (color: string, dark_color: string, text: string, href: string, logo: IconDefinition, allowed: boolean) => {
         return (
             <a {...(allowed && { href: href })} target="_blank" className={`${color} ${allowed ? 'cursor-pointer' : 'cursor-not-allowed'} w-full rounded p-3 text-center text-white text-2xl font-bold hover:opacity-80 flex flex-col items-center justify-center dark:${dark_color}`}>
                 <div>
@@ -17,11 +17,17 @@ function About() {
         )
     }
 
+    const getMetaData = () => {
+        return (
+            <Helmet>
+                <title>TheWilley | Home</title>
+            </Helmet>
+        )
+    }
+
     return (
         <>
-            <Helmet>
-                <title>TheWilley | About</title>
-            </Helmet>
+            {getMetaData()}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
 
                 <div className="grid grid-cols-1 gap-5">

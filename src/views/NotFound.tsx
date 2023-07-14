@@ -1,18 +1,32 @@
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { Helmet } from "react-helmet"
 import { Link } from "react-router-dom"
 
 function NotFound() {
+    const getMetaData = () => {
+        return (
+            <Helmet>
+                <title>{`TheWilley | 404`}</title>
+            </Helmet>
+        )
+    }
+
     return (
         <>
-            <Helmet>
-                <title>TheWilley | 404</title>
-            </Helmet>
-            <motion.div initial={{ transform: 'scale(0.8)', opacity: 0 }} animate={{ transform: 'scale(1)', opacity: 1 }} exit={{ transform: 'scale(0.8)', opacity: 0 }}>
-                <div className='grid h-screen place-items-center text-3xl font-bold'>
-                    <h1 className="text-5xl text-center">
-                        Looks like you've found a 404, lets get you <Link to='/' className="text-blue-500 underline">home</Link> again
-                    </h1>
+            {getMetaData()}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <div className='text-center text-8xl rounded p-3 h-[60vh] flex items-center justify-center'>
+                    <div className='border border-4 p-3 rounded'>
+                        <FontAwesomeIcon icon={faCircleExclamation} />
+                        <div className='text-3xl font-bold'>
+                            404
+                            <p className='text-2xl font-normal'>
+                                Lets get you <Link to='/' className="text-blue-500 underline">home</Link> again
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </motion.div>
         </>
