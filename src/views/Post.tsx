@@ -37,6 +37,7 @@ function Post() {
             return (
                 <Helmet>
                     <title>{`TheWilley | ${post.data[post?.data.length - 1].attributes.title}`}</title>
+                    <meta property="og:type" content="website" />
                     <meta property="og:title" content={`${post.data[post?.data.length - 1].attributes.title}`} />
                     <meta property="og:image" content={`${post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`} />
                     <meta property="og:description" content={post.data[post?.data.length - 1].attributes.description} />
