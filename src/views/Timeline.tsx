@@ -40,9 +40,6 @@ function Timeline() {
                 // To stop short posts
                 if (item.content.length < 10) return;
 
-                // To stop posts without a date
-                if (!fixedContent.dateFound) return;
-
                 // Return value
                 return (
                     <li className='relative' key={item.timestamp}>
@@ -52,6 +49,7 @@ function Timeline() {
                                 <div className='italic'>{item.author.name}</div>
                             </div>
                             <div className='p-4 font-serif'>
+                                {!fixedContent.dateFound && <span key={index} className='text-2xl text-blue-500'>[Year Unknown] - </span>}
                                 {fixedContent.modifiedString}
                             </div>
                         </div>
@@ -101,9 +99,11 @@ function Timeline() {
                 </div>
                 <ul className={`${!iunderstand && 'blur-sm'}`}>
                     {renderList()}
-                    <div className='flex justify-center mt-5'>
-                        <button onClick={handleMorePosts} className='border rounded p-3 hover:text-white dark:hover:text-black hover:bg-blue-500 transition'> Load More </button>
-                    </div>
+                    {timeline && next < timeline?.data.attributes.data.messages.length &&
+                        <div className='flex justify-center mt-5'>
+                            <button onClick={handleMorePosts} className='border rounded p-3 hover:text-white dark:hover:text-black hover:bg-blue-500 transition'> Load More </button>
+                        </div>
+                    }
                 </ul>
             </motion.div>
         </Loader>
