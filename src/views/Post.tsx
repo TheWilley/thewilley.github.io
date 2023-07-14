@@ -36,9 +36,17 @@ function Post() {
         if (post && post.data) {
             return (
                 <Helmet>
-                    <title>{`TheWilley | ${post && post.data[post?.data.length - 1].attributes.title}`}</title>
-                    <meta name="og:title" content={`${post && post.data[post?.data.length - 1].attributes.title}`}></meta>
-                    <meta name="og:image" content={`${post && post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`}></meta>
+                    <title>{`TheWilley | ${post.data[post?.data.length - 1].attributes.title}`}</title>
+                    <meta property="og:title" content={`${post.data[post?.data.length - 1].attributes.title}`} />
+                    <meta property="og:image" content={`${post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`} />
+                    <meta property="og:description" content={post.data[post?.data.length - 1].attributes.description} />
+                    <meta property="og:url" content={window.location.href} />
+
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content={`${post.data[post?.data.length - 1].attributes.title}`} />
+                    <meta name="twitter:image" content={`${post.data[post?.data.length - 1].attributes.thumbnail.data.attributes.url}`} />
+                    <meta name="twitter:description" content={post.data[post?.data.length - 1].attributes.description} />
+                    <meta name="twitter:url" content={window.location.href} />
                 </Helmet>
             )
         }
