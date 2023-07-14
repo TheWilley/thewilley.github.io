@@ -6,7 +6,7 @@
 
 import { faClock, faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { motion, useAnimate } from "framer-motion"
+import { motion } from "framer-motion"
 import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { convertDateAndTime, getPosts } from "../helpers/helpers"

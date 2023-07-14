@@ -7,8 +7,8 @@
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { motion, useAnimate } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { getRepos } from '../helpers/helpers';
 import { Helmet } from 'react-helmet';
 import Loader from '../components/Loader';

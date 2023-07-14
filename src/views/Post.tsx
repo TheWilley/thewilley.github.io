@@ -4,7 +4,7 @@
     Displays a given blog post
 /*/
 
-import { motion, useAnimate } from 'framer-motion';
+import { motion } from 'framer-motion';
 import 'github-markdown-css';
 import { useEffect, useState } from 'react';
 import { convertDateAndTime, getSinglePost } from '../helpers/helpers';
