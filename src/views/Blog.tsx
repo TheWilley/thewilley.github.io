@@ -62,7 +62,21 @@ function Blog() {
     const getMetaData = () => {
         return (
             <Helmet>
-                <title>TheWilley | About</title>
+                <title>TheWilley</title>
+                <meta name="title" content="TheWilley" />
+                <meta name="description" content="Official website built with React" />
+
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://thewilley.github.io/" />
+                <meta property="og:title" content="TheWilley" />
+                <meta property="og:description" content="Official website built with React" />
+                <meta property="og:image" content="https://res.cloudinary.com/dfvuecp0c/image/upload/v1688991253/logo_09265acb48.png?updated_at=2023-07-10T12:14:13.535Z" />
+
+                <meta property="twitter:card" content="summary_large_image" />
+                <meta property="twitter:url" content="https://thewilley.github.io/" />
+                <meta property="twitter:title" content="TheWilley" />
+                <meta property="twitter:description" content="Official website built with React" />
+                <meta property="twitter:image" content="https://res.cloudinary.com/dfvuecp0c/image/upload/v1688991253/logo_09265acb48.png?updated_at=2023-07-10T12:14:13.535Z" />
             </Helmet>
         )
     }

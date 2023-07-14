@@ -20,7 +20,7 @@ function About() {
     const getMetaData = () => {
         return (
             <Helmet>
-                <title>TheWilley | Home</title>
+                <title>TheWilley | About</title>
             </Helmet>
         )
     }
