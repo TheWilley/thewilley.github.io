@@ -9,7 +9,6 @@ import Loader from '../components/Loader';
 const imagePerRow = 100
 
 function Timeline() {
-    const [scope, animate] = useAnimate()
     const [timeline, setTimeline] = useState<Timeline | null>()
     const [next, setNext] = useState(imagePerRow);
     const [iunderstand, setIunderstand] = useState(false)
@@ -89,13 +88,10 @@ function Timeline() {
             getTimeline((timeline) => {
                 setTimeline(timeline)
                 callback()
-                if(scope.current) {
-                    animate(scope.current, { opacity: 1 })
-                }
             })
         }}>
             {getMetaData()}
-            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className='text-center text-white bg-green-500 dark:bg-green-800 rounded p-3 w-full'> Welcome! This is the result of a game we played on discord where we came up with fictional events for a timeline. This lead to some pretty wild and fun moments, which I would like to share! </div>
                 <div className={`text-center text-white bg-red-500 dark:bg-red-800 rounded p-3 w-full mt-2 ${iunderstand && 'hidden'}`}>
                     Warning! This content contains foul language and sensitive subjects. Please be warry of this before you proceed.

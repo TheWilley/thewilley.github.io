@@ -19,7 +19,6 @@ function Blog() {
      * Handles the state of blog posts
      */
     const [posts, setPosts] = useState<Posts | null>()
-    const [scope, animate] = useAnimate()
 
     /**
      * Creates JSX for a blog entry
@@ -73,13 +72,10 @@ function Blog() {
             getPosts((posts) => {
                 setPosts(posts)
                 callback()
-                if(scope.current) {
-                    animate(scope.current, { opacity: 1 })
-                }
             })
         }}>
             {getMetaData()}
-            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className='w-full'>
                 <ul className="list-none gap-2 [&>*:first-child]:mt-0">
                     {allPosts}
                 </ul>

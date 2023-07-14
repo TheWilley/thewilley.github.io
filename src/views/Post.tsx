@@ -17,7 +17,6 @@ import Loader from '../components/Loader';
 
 function Post() {
     const [post, setPost] = useState<Posts | null>()
-    const [scope, animate] = useAnimate()
     const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
     // To check for mode
@@ -100,13 +99,10 @@ function Post() {
             getSinglePost((post) => {
                 setPost(post)
                 callback()
-                if(scope.current) {
-                    animate(scope.current, { opacity: 1 })
-                }
             }, id)
         }}>
             {getMetaData()}
-            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className='w-full'>
                 {renderPost()}
             </motion.div>
         </Loader>

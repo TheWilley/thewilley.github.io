@@ -15,15 +15,6 @@ import Loader from '../components/Loader';
 
 function Projects() {
     const [repos, setRepos] = useState<Repo[] | null>([])
-    const [scope, animate] = useAnimate()
-
-    useEffect(() => {
-        getRepos((repos) => {
-            setRepos(repos)
-            animate(scope.current, { opacity: 1 })
-        })
-    }, [])
-
     const getMetaData = () => {
         return (
             <Helmet>
@@ -64,10 +55,13 @@ function Projects() {
 
     return (
         <Loader effect={(callback) => {
-            callback()
+            getRepos((repos) => {
+                setRepos(repos)
+                callback()
+            })
         }}>
             {getMetaData()}
-            <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {renderRepos()}
                 </ul>
