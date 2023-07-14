@@ -1,9 +1,10 @@
 import { motion, useAnimate } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { getTimeline } from '../helpers/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import Loader from '../components/Loader';
 
 const imagePerRow = 100
 
@@ -12,13 +13,6 @@ function Timeline() {
     const [timeline, setTimeline] = useState<Timeline | null>()
     const [next, setNext] = useState(imagePerRow);
     const [iunderstand, setIunderstand] = useState(false)
-
-    useEffect(() => {
-        getTimeline((timeline) => {
-            setTimeline(timeline)
-            animate(scope.current, { opacity: 1 })
-        })
-    }, [])
 
     const handleMorePosts = () => {
         setNext(next + imagePerRow);
@@ -91,7 +85,13 @@ function Timeline() {
     }
 
     return (
-        <>
+        <Loader effect={(callback) => {
+            getTimeline((timeline) => {
+                setTimeline(timeline)
+                callback()
+                animate(scope.current, { opacity: 1 })
+            })
+        }}>
             {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
                 <div className='text-center text-white bg-green-500 dark:bg-green-800 rounded p-3 w-full'> Welcome! This is the result of a game we played on discord where we came up with fictional events for a timeline. This lead to some pretty wild and fun moments, which I would like to share! </div>
@@ -108,7 +108,7 @@ function Timeline() {
                     </div>
                 </ul>
             </motion.div>
-        </>
+        </Loader>
     )
 }
 

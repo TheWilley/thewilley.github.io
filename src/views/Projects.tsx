@@ -11,6 +11,7 @@ import { motion, useAnimate } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getRepos } from '../helpers/helpers';
 import { Helmet } from 'react-helmet';
+import Loader from '../components/Loader';
 
 function Projects() {
     const [repos, setRepos] = useState<Repo[] | null>([])
@@ -62,14 +63,16 @@ function Projects() {
     }
 
     return (
-        <>
+        <Loader effect={(callback) => {
+            callback()
+        }}>
             {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }}>
                 <ul className="list-none p-4 container m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {renderRepos()}
                 </ul>
             </motion.div>
-        </>
+        </Loader>
     )
 }
 

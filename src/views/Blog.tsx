@@ -7,11 +7,12 @@
 import { faClock, faPenToSquare } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { motion, useAnimate } from "framer-motion"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from "react-router-dom"
 import { convertDateAndTime, getPosts } from "../helpers/helpers"
 import { Helmet } from 'react-helmet'
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import Loader from '../components/Loader'
 
 function Blog() {
     /**
@@ -67,25 +68,21 @@ function Blog() {
         )
     }
 
-    /**
-     * Fetches the blog data onload
-     */
-    useEffect(() => {
-        getPosts((posts) => {
-            setPosts(posts)
-            animate(scope.current, { opacity: 1 })
-        })
-    }, [])
-
     return (
-        <>
+        <Loader effect={(callback: () => void) => {
+            getPosts((posts) => {
+                setPosts(posts)
+                callback()
+                animate(scope.current, { opacity: 1 })
+            })
+        }}>
             {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 <ul className="list-none gap-2 [&>*:first-child]:mt-0">
                     {allPosts}
                 </ul>
             </motion.div>
-        </>
+        </Loader>
     )
 }
 

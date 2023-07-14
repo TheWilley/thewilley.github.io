@@ -13,6 +13,7 @@ import remarkGfm from 'remark-gfm'
 import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import Loader from '../components/Loader';
 
 function Post() {
     const [post, setPost] = useState<Posts | null>()
@@ -93,21 +94,20 @@ function Post() {
         }
     }
 
-    useEffect(() => {
-        const id = window.location.hash.split("/").pop()
-        getSinglePost((post) => {
-            setPost(post)
-            animate(scope.current, { opacity: 1 })
-        }, id)
-    }, [])
-
     return (
-        <>
+        <Loader effect={(callback: () => void) => {
+            const id = window.location.hash.split("/").pop()
+            getSinglePost((post) => {
+                setPost(post)
+                callback()
+                animate(scope.current, { opacity: 1 })
+            }, id)
+        }}>
             {getMetaData()}
             <motion.div ref={scope} initial={{ opacity: 0 }} exit={{ opacity: 0 }} className='w-full'>
                 {renderPost()}
             </motion.div>
-        </>
+        </Loader>
     )
 }
 

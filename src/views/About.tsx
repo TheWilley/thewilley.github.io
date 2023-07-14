@@ -2,6 +2,7 @@ import { IconDefinition, faGithub, faSoundcloud, faYoutube } from "@fortawesome/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { Helmet } from "react-helmet"
+import Loader from "../components/Loader"
 
 function About() {
     const createSocialMediaItem = (color: string, dark_color: string, text: string, href: string, logo: IconDefinition, allowed: boolean) => {
@@ -26,10 +27,11 @@ function About() {
     }
 
     return (
-        <>
+        <Loader effect={(callback) => {
+            callback()
+        }}>
             {getMetaData()}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-
                 <div className="grid grid-cols-1 gap-5">
                     <p className="text-xl">
                         Hi! My name is William Larsson, but I often go by the name "TheWilley" as my online alias. I have a interest in programming, music, art and generally anything to do with computers.
@@ -43,7 +45,7 @@ function About() {
                     </div>
                 </div>
             </motion.div>
-        </>
+        </Loader>
     )
 }
 

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { motion } from "framer-motion"
 import { Helmet } from "react-helmet"
 import { Link } from "react-router-dom"
+import Loader from "../components/Loader"
 
 function NotFound() {
     const getMetaData = () => {
@@ -14,7 +15,9 @@ function NotFound() {
     }
 
     return (
-        <>
+        <Loader effect={(callback) => {
+            callback()
+        }}>
             {getMetaData()}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <div className='text-center text-8xl rounded p-3 h-[60vh] flex items-center justify-center'>
@@ -29,7 +32,7 @@ function NotFound() {
                     </div>
                 </div>
             </motion.div>
-        </>
+        </Loader>
     )
 }
 

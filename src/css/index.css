@@ -9,6 +9,7 @@ html {
 html,
 body {
     min-height: 100%;
+    min-width: 100%;
     display: flex;
     justify-content: center;
     position: relative;

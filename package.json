@@ -28,6 +28,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-loader-spinner": "^5.3.4",
     "react-markdown": "^8.0.7",
     "react-parallax-tilt": "^1.7.145",
     "react-pro-sidebar": "^1.1.0-alpha.1",
