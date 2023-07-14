@@ -73,7 +73,9 @@ function Blog() {
             getPosts((posts) => {
                 setPosts(posts)
                 callback()
-                animate(scope.current, { opacity: 1 })
+                if(scope.current) {
+                    animate(scope.current, { opacity: 1 })
+                }
             })
         }}>
             {getMetaData()}

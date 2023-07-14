@@ -89,7 +89,9 @@ function Timeline() {
             getTimeline((timeline) => {
                 setTimeline(timeline)
                 callback()
-                animate(scope.current, { opacity: 1 })
+                if(scope.current) {
+                    animate(scope.current, { opacity: 1 })
+                }
             })
         }}>
             {getMetaData()}

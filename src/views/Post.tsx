@@ -100,7 +100,9 @@ function Post() {
             getSinglePost((post) => {
                 setPost(post)
                 callback()
-                animate(scope.current, { opacity: 1 })
+                if(scope.current) {
+                    animate(scope.current, { opacity: 1 })
+                }
             }, id)
         }}>
             {getMetaData()}
