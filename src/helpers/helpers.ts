@@ -74,7 +74,7 @@ const getPosts = async (callback: (posts: Posts | null) => void) => {
  * @param callback he callback function to run
  */
 const getTimeline = async (callback: (posts: Timeline | null) => void) => {
-    const response = await (await fetch(`${configuration.endpoint_url}/api/tieline`)).json().catch(console.error)
+    const response = await (await fetch(`${configuration.endpoint_url}/api/timeline`)).json().catch(console.error)
     callback(response)
 }
 
